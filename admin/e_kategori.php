@@ -1,3 +1,28 @@
+<?php
+include "koneksi.php";
+
+if (isset($_POST['simpan'])) {
+  $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
+  $hasil = mysqli_fetch_array($auto);
+  $code = $hasil['max_code'];
+  $urutan = (int)substr($code, 1, 3);
+  $urutan++;
+  $huruf = "K";
+  $id_kategori = $huruf . sprintf("%03", $urutan);
+  $nm_kategori = $_POST['nm_kategori'];
+
+  $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES
+  ('$id_kategori', '$nm_kategori')");
+  if ($query) {
+    echo "<script>alert('Data berhasil ditambahkan!')</script>";
+    header("refresh: 0, kategori.php");
+  } else {
+    echo "<script>alert('Data gagal ditambahkan!')</script>";
+    header("refresh: 0, kategori.php");
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +30,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tables / General - NiceAdmin Bootstrap Template</title>
+  <title>Forms / Layouts - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -51,16 +76,18 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
         <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
@@ -130,8 +157,6 @@
 
         </li><!-- End Notification Nav -->
 
-        <li class="nav-item dropdown">
-
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
             <li class="dropdown-header">
               You have 3 new messages
@@ -194,13 +219,12 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/IMG_2531.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Alfareza</span>
+            <img src="assets/img/mesagges-3.jpg" alt="Profile" class="rounded-circle">
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6>Alfareza</h6>
               <span>Web Designer</span>
             </li>
             <li>
@@ -252,7 +276,7 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
+    <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
 <ul class="sidebar-nav" id="sidebar-nav">
@@ -317,103 +341,38 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
-          <li class="breadcrumb-item">Kategri Produk</li>
+          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item active">Tambah</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card-body">
-          <a href="t_kategori.php" class="btn btn-primary mt-3">
-            <i class="bi bi-plus-lg"></i> Tambah data
-            </a>
-        </div>
-      </div>
-    </div>
-
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <!-- Table With Stripped Rows -->
-               <table class="table table-stripped mt-2">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama Kategori</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    include "koneksi.php";
-                    $no = 1;
+                
+              <!-- Vertical Form -->
+              <form class="row g-3 mt-2" methode="post">
+                <div class="col-12">
+                  <label for="inputNanme4" class="form-label">Nama Kategori</label>
+                  <input type="text" class="form-control" id="nm_kategori" name="nm_kategori" placeholder="Masukkan Nama Kategori"
+                  value="<?php echo $data['nm_kategori']; ?>">
+                </div>
+                <div class="text-center mt-2">
+                  <button type="submit" name="simpan" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- Vertical Form -->
 
-                    // Cek apakah ada pencarian
-                    $query = isset($_POST['query']) ? mysqli_real_escape_string($koneksi, 
-                    $_POST['query']) : '';
-
-                    // Query dasar
-                    $sql_query = "SELECT id_kategori, nm_kategori from tb_kategori";
-
-                    // Jika ada pencarian, tambahkan kondisi where
-                    if (!empty($query)) {
-                      $sql_query .= "WHERE nm_kategori LIKE 
-                      '%$query%'";
-                    }
-
-                    $sql = mysqli_query($koneksi, $sql_query);
-
-                    if (mysqli_num_rows($sql) > 0) {
-                      while ($hasil = mysqli_fetch_arrray($sql)) {
-                    ?>
-                          <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $hasil ['nm_kategori']; ?></td>
-                            <td>
-                              <a href="e_kategori.php?id= <?
-                              php echo $hasil
-                              ['id_kategori']; ?>" 
-                              class="btn btn-warning">
-                                  <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <a href="h_kategori.php?id=<?php 
-                                echo $hasil
-                                ['id kategori']; ?>" 
-                                class="btn btn-danger"
-                                onlick="return confirm ('Apakah Anda yakin Ingin menghapus 
-                                data?')">
-                                   <i class="bi bi-trash"></i>
-                                  </a>
-                            </td>
-                          </tr>
-                        <?php
-                      }
-                    } else {
-                      ?>
-                      <tr>
-                        <td colspan="3"
-                        class="text-center">Belum Ada Data</td>
-                      </tr>
-                    <?php
-                    }
-                    ?>
-
-                  </tbody>
-               </table>
-               <!-- End Table with stripped rows -->
-            </div>
-          </div>
-        </div>
+          <div class="card">
       </div>
-      </section>
+    </section>
 
   </main><!-- End #main -->
 
- <!-- ======= Footer ======= -->
- <footer id="footer" class="footer">
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>ElectroHub</span></strong>. All Rights Reserved
     </div>
