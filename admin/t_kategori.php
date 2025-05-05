@@ -8,7 +8,7 @@ if (isset($_POST['simpan'])) {
   $urutan = (int)substr($code, 1, 3);
   $urutan++;
   $huruf = "K";
-  $id_kategori = $huruf . sprintf("%03", $urutan);
+  $id_kategori = $huruf . sprintf("%03s", $urutan);
   $nm_kategori = $_POST['nm_kategori'];
 
   $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES
@@ -354,7 +354,7 @@ if (isset($_POST['simpan'])) {
             <div class="card-body">
 
               <!-- Vertical Form -->
-              <form class="row g-3 mt-2" methode="post">
+              <form class="row g-3 mt-2" method="post">
                 <div class="col-12">
                   <label for="inputNanme4" class="form-label">Nama Kategori</label>
                   <input type="text" class="form-control" id="nm_kategori" name="nm_kategori" placeholder="Masukkan Nama Kategori">
