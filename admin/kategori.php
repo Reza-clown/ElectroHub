@@ -317,7 +317,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
-          <li class="breadcrumb-item">Kategri Produk</li>
+          <li class="breadcrumb-item">Kategori Produk</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -373,14 +373,13 @@
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $hasil ['nm_kategori']; ?></td>
                             <td>
-                              <a href="e_kategori.php?id= <?php echo $hasil['id_kategori']; ?>" 
-                              class="btn btn-warning">
-                                  <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <a href="h_kategori.php?id=<?php echo $hasil['id kategori']; ?>" class="btn btn-danger" onclick="return confirm ('Apakah Anda yakin Ingin menghapus data?')">
-                                   <i class="bi bi-trash"></i>
-                                  </a>
-                            </td>
+                                                    <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </a>
+                                                    <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+                                                        <i class="bi bi-trash"></i>
+                                                    </a>
+                                                </td>
                           </tr>
                         <?php
                       }
