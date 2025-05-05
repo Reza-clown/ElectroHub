@@ -367,24 +367,17 @@
                     $sql = mysqli_query($koneksi, $sql_query);
 
                     if (mysqli_num_rows($sql) > 0) {
-                      while ($hasil = mysqli_fetch_arrray($sql)) {
+                      while ($hasil = mysqli_fetch_array($sql)) {
                     ?>
                           <tr>
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $hasil ['nm_kategori']; ?></td>
                             <td>
-                              <a href="e_kategori.php?id= <?
-                              php echo $hasil
-                              ['id_kategori']; ?>" 
+                              <a href="e_kategori.php?id= <?php echo $hasil['id_kategori']; ?>" 
                               class="btn btn-warning">
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a href="h_kategori.php?id=<?php 
-                                echo $hasil
-                                ['id kategori']; ?>" 
-                                class="btn btn-danger"
-                                onlick="return confirm ('Apakah Anda yakin Ingin menghapus 
-                                data?')">
+                                <a href="h_kategori.php?id=<?php echo $hasil['id kategori']; ?>" class="btn btn-danger" onclick="return confirm ('Apakah Anda yakin Ingin menghapus data?')">
                                    <i class="bi bi-trash"></i>
                                   </a>
                             </td>
