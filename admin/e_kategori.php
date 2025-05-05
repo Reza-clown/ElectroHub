@@ -2,7 +2,7 @@
 include "koneksi.php";
 
 $id = $_GET['id'];
-$sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'")
+$sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
 $data = mysqli_fetch_array($sql);
 
 if (isset($_POST['simpan'])) {
@@ -350,7 +350,7 @@ if (isset($_POST['simpan'])) {
             <div class="card-body">
                 
               <!-- Vertical Form -->
-              <form class="row g-3 mt-2" methode="post">
+              <form class="row g-3 mt-2" method="post">
                 <div class="col-12">
                   <label for="inputNanme4" class="form-label">Nama Kategori</label>
                   <input type="text" class="form-control" id="nm_kategori" name="nm_kategori" placeholder="Masukkan Nama Kategori"
