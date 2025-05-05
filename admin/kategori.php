@@ -194,7 +194,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/IMG_2531.jpg" alt="Profile" class="rounded-circle">
+            <img src="assets/img/reza.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Alfareza</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -373,13 +373,13 @@
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $hasil ['nm_kategori']; ?></td>
                             <td>
-                                                    <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
-                                                    <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
-                                                        <i class="bi bi-trash"></i>
-                                                    </a>
-                                                </td>
+                                 <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
+                                  <i class="bi bi-pencil-square"></i>
+                                   </a>
+                                    <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+                                      <i class="bi bi-trash"></i>
+                                        </a>
+                              </td>
                           </tr>
                         <?php
                       }
@@ -414,7 +414,7 @@
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">Alfareza</a>
+      Designed by <a href="https://instagram.com/alfrza.rmdn">Alfareza</a>
     </div>
   </footer><!-- End Footer -->
 
