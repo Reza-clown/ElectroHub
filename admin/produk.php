@@ -195,7 +195,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    include "koneksi.php"
+                                    include "koneksi.php";
                                     $no = 1;
 
                                     //Ambil keyword pencarian dari GET
@@ -205,11 +205,11 @@
                                     $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
                                     
                                     if (!empty($query)) {
-                                        $sql_query .= "WHERE tb_produk.nm_produk LIKE '%$query% OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
+                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
                                     }
 
                                     // Tambahkan ORDER BY
-                                    $sql_query .= "ORDER BY tb_produk.id_produk ASC";
+                                    $sql_query .= " ORDER BY tb_produk.id_produk ASC";
 
                                     $sql = mysqli_query($koneksi, $sql_query);
 
@@ -228,7 +228,7 @@
                                                         <img src="produk_img/<?php echo $hasil['gambar']; ?>" width="100">
                                                     <?php } else { ?>
                                                         Tidak ada gambar 
-                                                    <?php} ?>
+                                                    <?php } ?>
                                                 </td>
                                                 <td>
                                                     <a href="e_produk.php?id=<?php echo $hasil['id_produk']; ?>" class="btn btn-warning">
@@ -241,13 +241,15 @@
                                             </tr>
                                         <?php
                                         }
-                                    } else {
+                                    } else { 
                                         ?>
                                         <tr>
                                             <td colspan="8" class="text-center">Belum Ada Data</td>
                                         </tr>
                                     <?php
                                     }
+                                    ?>
+
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
