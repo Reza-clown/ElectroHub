@@ -272,16 +272,16 @@ if (isset($_POST['simpan'])) {
 
 <ul class="sidebar-nav" id="sidebar-nav">
 
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link " href="index.php">
-      <i class="bi bi-grid"></i>
+      <i class="bi bi-house-door"></i>
       <span>Beranda</span>
     </a>
   </li><!-- End Dashboard Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="kategori.php">
-    <i class="bi bi-backpack"></i>
+    <a class="nav-link" href="kategori.php">
+      <i class="bi bi-tags"></i>
       <span>Kategori</span>
     </a>
   </li><!-- End Kategori Page Nav -->
