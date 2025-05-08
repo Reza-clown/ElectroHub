@@ -44,8 +44,8 @@
         </div><!-- End Logo -->
 
         <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="GET" action="">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <form class="search-form d-flex align-items-center" method="POST" action="">
+                <input type="text" name="query" placeholder="Search" title="Enter Search Keywoard" value="<?php echo isset($_POST['query']) ? htmlspecialchars($_POST['query']) : ''; ?>" >
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
@@ -62,13 +62,13 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/reza.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
                         <!-- profile-img.jpg diganti dengan foto kalian -->
-                    </a><!-- End Profile Image Icon -->
+                    </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Alfareza</h6>
+                            <h6>Nama Kalian</h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -151,11 +151,11 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Produk</h1>
+            <h1>Pengguna</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                    <li class="breadcrumb-item active">Produk</li>
+                    <li class="breadcrumb-item active">Pengguna</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -175,7 +175,7 @@
         <section class="section">
             <div class="row">
 
-                <div class="col-lg-12">
+                <div class="col-lg-6">
 
                     <div class="card">
                         <div class="card-body">
@@ -185,11 +185,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Nama Produk</th>
-                                        <th scope="col">Harga</th>
-                                        <th scope="col">Stok</th>
-                                        <th scope="col">Nama Kategori</th>
-                                        <th scope="col">Gambar</th>
+                                        <th scope="col">Nama Pengguna</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -197,54 +194,39 @@
                                     <?php
                                     include "koneksi.php";
                                     $no = 1;
+                                   
+                                    // Cek apakah ada input pencarian
+                                    $query = isset($_POST['query']) ? mysqli_real_escape_string($koneksi, $_POST['query']) : '';
 
-                                    //Ambil keyword pencarian dari GET
-                                    $query = isset($_GET['query']) ? mysqli_real_escape_string($koneksi, $_GET['query']) : '';
+                                    // Query dasar
+                                    $sql_query = "SELECT id_user, username, status FROM tb_user";
 
-                                    // Tambahkan where jika query tidak kosong
-                                    $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
-                                    
+                                    // Tambahkan pencarian jika input tidak kosong
                                     if (!empty($query)) {
-                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
+                                        $sql_query .= " WHERE username LIKE '%$query%'";
                                     }
-
-                                    // Tambahkan ORDER BY
-                                    $sql_query .= " ORDER BY tb_produk.id_produk ASC";
 
                                     $sql = mysqli_query($koneksi, $sql_query);
 
-                                    if (mysqli_num_rows($sql) > 0) {
+                                    if (mysqli_num_rows(($sql)) > 0) {
                                         while ($hasil = mysqli_fetch_array($sql)) {
                                     ?>
                                             <tr>
-                                                <td><?php echo $no++;?></td>
-                                                <td><?php echo $hasil['nm_produk']; ?></td>
-                                                <td>Rp <?php echo number_format($hasil['harga'], 0, ',', '.'); ?></td>
-                                                <td><?php echo $hasil['stok']; ?></td>
-                                                <td><?php echo $hasil['desk']; ?></td>
-                                                <td><?php echo $hasil['nm_kategori']; ?></td>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $hasil['username']; ?></td>
+                                                <td><?php echo $hasil['status']; ?></td>
                                                 <td>
-                                                    <?php if (!empty($hasil['gambar'])) { ?>
-                                                        <img src="produk_img/<?php echo $hasil['gambar']; ?>" width="100">
-                                                    <?php } else { ?>
-                                                        Tidak ada gambar 
-                                                    <?php } ?>
-                                                </td>
-                                                <td>
-                                                    <a href="e_produk.php?id=<?php echo $hasil['id_produk']; ?>" class="btn btn-warning">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
-                                                    <a href="h_produk.php?id=<?php echo $hasil['id_produk']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin Ingin Menghapus Data?')">
-                                                        <i class="bi bi-trash"></i>
+                                                    <a href="h_pengguna.php?id=<?php echo $hasil['id_user']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+                                                        <i> class="bi bi-trash"</i>
                                                     </a>
                                                 </td>
                                             </tr>
                                         <?php
                                         }
-                                    } else { 
+                                    } else {
                                         ?>
                                         <tr>
-                                            <td colspan="8" class="text-center">Belum Ada Data</td>
+                                            <td colspan="4" class="text-center">Data Tidak Ditemukan</td>
                                         </tr>
                                     <?php
                                     }
@@ -268,7 +250,7 @@
             &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/namaig/" target="_blank" >Nama Anda</a>
+            Designed by <a href="https://instagram.com/namaig/">Nama Anda</a>
         </div>
     </footer><!-- End Footer -->
 

@@ -259,7 +259,7 @@ if (isset($_POST['simpan'])) {
             &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Nama Kalian</a>
+            Designed by <a href="link ig" target="_blank" >Nama Kalian</a>
         </div>
     </footer><!-- End Footer -->
 
