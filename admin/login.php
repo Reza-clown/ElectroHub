@@ -1,3 +1,58 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+// Cek apakah sudah login
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<?php
+session_start();
+require 'koneksi.php';
+
+if (isset($_POST['logon'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Cek apakah username ditemukan
+    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
+
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+
+        // Cek password
+        if (password_verify($password, $row['password'])) {
+            // Cek apakah status user adalah admin
+            if ($row['status'] === 'admin') {
+              $_SESSION['login'] = true;
+              $_SESSION['username'] = $row['username'];
+              $_SESSION['status'] = $row['status'];
+              header("Location: index.php");
+              exit;
+            } else {
+              echo "<script>alert('Anda tidak memilki akses sebagai admin!')</script>";
+            }
+        } else {
+            echo "<script>alert('Password atau username yang anda masukkan salah!')</script>";
+        }
+    } else {
+        echo "<script>alert('Password atau username yang anda masukkan salah!')</script>";
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +132,7 @@
               </div>
 
               <div class="credits">
-                Designed by <a href="https://instagram.com/namaig/">Nama Anda</a>
+                Designed by <a href="https://instagram.com/alfareza.rmdn_/" target="_blank">Alfareza</a>
               </div>
 
             </div>

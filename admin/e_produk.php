@@ -1,4 +1,22 @@
 <?php
+session_start();
+include 'koneksi.php';
+
+// Cek apakah sudah login
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<?php
 include 'koneksi.php';
 
 // Pastikan ada ID produk yang dikirimkan
@@ -48,12 +66,11 @@ if (isset($_POST['update'])) {
 
     if ($query) {
         echo "<script>alert('Produk berhasil diperbarui!');</script>";
-        header("refresh:0, produk.php"); 
+        header("refresh:0, produk.php");
     } else {
         echo "<script>alert('Gagal memperbarui produk!');</script>";
         header("refresh:0, produk.php");
     }
-    
 }
 ?>
 
@@ -114,7 +131,7 @@ if (isset($_POST['update'])) {
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Nama Kalian</h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -249,10 +266,10 @@ if (isset($_POST['update'])) {
                                 <div class="col-12">
                                     <label for="gambar" class="form-label">Gambar Produk</label>
                                     <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
-                                <br>
-                                <?php if ($data['gambar'] != "") { ?>
-                                    <img src="produk_img/<?php echo $data['gambar']; ?>" width="150">
-                                <?php } ?>
+                                    <br>
+                                    <?php if ($data['gambar'] != "") { ?>
+                                        <img src="produk_img/<?php echo $data['gambar']; ?>" width="150">
+                                    <?php } ?>
                                 </div>
                                 <div class="text-center">
                                     <button type="reset" class="btn btn-secondary">Reset</button>
@@ -275,7 +292,7 @@ if (isset($_POST['update'])) {
             &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Nama Kalian</a>
+            Designed by <a href="link ig">Alfareza</a>
         </div>
     </footer><!-- End Footer -->
 

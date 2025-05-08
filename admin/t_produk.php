@@ -1,4 +1,22 @@
 <?php
+session_start();
+include 'koneksi.php';
+
+// Cek apakah sudah login
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<?php
 include 'koneksi.php';
 
 // Mendapatkan kode produk otomatis
@@ -28,9 +46,9 @@ if (isset($_POST['simpan'])) {
     if (!in_array($extension, $allowed_extensions)) {
         echo "<script>alert('Format gambar tidak valid!. Hanya jpg, jpeg, png, dan webp yang diperbolehkan');</script>";
     } else {
-       // rename file gambar agar unik
-       $imgnewfile = md5(time() . $imgfile) . '.' . $extension;
-       move_uploaded_file($tmp_file, $dir . $imgnewfile);
+        // rename file gambar agar unik
+        $imgnewfile = md5(time() . $imgfile) . '.' . $extension;
+        move_uploaded_file($tmp_file, $dir . $imgnewfile);
 
         // Simpan data produk ke database
         $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) VALUES ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
@@ -103,7 +121,7 @@ if (isset($_POST['simpan'])) {
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Nama Kalian</h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -259,7 +277,7 @@ if (isset($_POST['simpan'])) {
             &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig" target="_blank" >Nama Kalian</a>
+            Designed by <a href="link ig" target="_blank">Nama Kalian</a>
         </div>
     </footer><!-- End Footer -->
 

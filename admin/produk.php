@@ -1,3 +1,21 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+// Cek apakah sudah login
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +86,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Alfareza</h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -203,7 +221,7 @@
 
                                     // Tambahkan where jika query tidak kosong
                                     $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
-                                    
+
                                     if (!empty($query)) {
                                         $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
                                     }
@@ -217,7 +235,7 @@
                                         while ($hasil = mysqli_fetch_array($sql)) {
                                     ?>
                                             <tr>
-                                                <td><?php echo $no++;?></td>
+                                                <td><?php echo $no++; ?></td>
                                                 <td><?php echo $hasil['nm_produk']; ?></td>
                                                 <td>Rp <?php echo number_format($hasil['harga'], 0, ',', '.'); ?></td>
                                                 <td><?php echo $hasil['stok']; ?></td>
@@ -227,7 +245,7 @@
                                                     <?php if (!empty($hasil['gambar'])) { ?>
                                                         <img src="produk_img/<?php echo $hasil['gambar']; ?>" width="100">
                                                     <?php } else { ?>
-                                                        Tidak ada gambar 
+                                                        Tidak ada gambar
                                                     <?php } ?>
                                                 </td>
                                                 <td>
@@ -241,7 +259,7 @@
                                             </tr>
                                         <?php
                                         }
-                                    } else { 
+                                    } else {
                                         ?>
                                         <tr>
                                             <td colspan="8" class="text-center">Belum Ada Data</td>
@@ -268,7 +286,7 @@
             &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/namaig/" target="_blank" >Nama Anda</a>
+            Designed by <a href="https://instagram.com/namaig/" target="_blank">Nama Anda</a>
         </div>
     </footer><!-- End Footer -->
 
