@@ -11,7 +11,6 @@ if (!isset($_SESSION['login'])) {
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
-    header("Location: login.php");
     exit;
 }
 ?>
@@ -76,7 +75,7 @@ if (isset($_POST['simpan'])) {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/logo3.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -103,7 +102,7 @@ if (isset($_POST['simpan'])) {
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
+                <img src="assets/img/logo2.png" alt="">
                 <span class="d-none d-lg-block">ElectroHub</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -115,7 +114,7 @@ if (isset($_POST['simpan'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/reza.jpg" alt="Profile" class="rounded-circle">
                         <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
@@ -153,7 +152,7 @@ if (isset($_POST['simpan'])) {
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php">
-                    <i class="bi bi-house-door"></i>
+                    <i class="bi bi-grid"></i>
                     <span>Beranda</span>
                 </a>
             </li><!-- End Beranda Nav -->
@@ -167,7 +166,7 @@ if (isset($_POST['simpan'])) {
 
             <li class="nav-item">
                 <a class="nav-link" href="produk.php">
-                    <i class="bi bi-shop"></i>
+                    <i class="bi bi-box-seam"></i>
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Page Nav -->
@@ -274,10 +273,10 @@ if (isset($_POST['simpan'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>ElectroHub</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig" target="_blank">Nama Kalian</a>
+            Designed by <a href="https://instagram.com/alfareza.rmdn_/" target="_blank">Alfareza</a>
         </div>
     </footer><!-- End Footer -->
 

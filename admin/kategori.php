@@ -11,7 +11,6 @@ if (!isset($_SESSION['login'])) {
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
-    header("Location: login.php");
     exit;
 }
 ?>
@@ -28,7 +27,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo3.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -63,7 +62,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/logo2.png" alt="">
         <span class="d-none d-lg-block">ElectroHub</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -244,8 +243,8 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="index.php">
-      <i class="bi bi-house-door"></i>
+    <a class="nav-link collapsed" href="index.php">
+      <i class="bi bi-grid"></i>
       <span>Beranda</span>
     </a>
   </li><!-- End Dashboard Nav -->
@@ -259,35 +258,35 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="produk.php">
-      <i class="bi bi-question-circle"></i>
+      <i class="bi bi-box-seam"></i>
       <span>Produk</span>
     </a>
   </li><!-- End Produk Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="keranjang.php">
-      <i class="bi bi-envelope"></i>
+      <i class="bi bi-cart"></i>
       <span>Keranjang</span>
     </a>
   </li><!-- End Keranjang Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="transaksi.php">
-      <i class="bi bi-card-list"></i>
+      <i class="bi bi-receipt"></i>
       <span>Transaksi</span>
     </a>
   </li><!-- End transaksi Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="laporan.php">
-      <i class="bi bi-box-arrow-in-right"></i>
+      <i class="bi bi-file-earmark-bar-graph"></i>
       <span>Laporan</span>
     </a>
   </li><!-- End Laporan Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="pengguna.php">
-      <i class="bi bi-dash-circle"></i>
+      <i class="bi bi-people"></i>
       <span>Pengguna</span>
     </a>
   </li><!-- End Pengguna Page Nav -->
@@ -310,10 +309,12 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
     <div class="row">
       <div class="col-lg-12">
-        <div class="card-body">
-          <a href="t_kategori.php" class="btn btn-primary mt-3">
-            <i class="bi bi-plus-lg"></i> Tambah data
+        <div class="card">
+          <div class="card-body">
+            <a href="t_kategori.php" class="btn btn-primary mt-3">
+              <i class="bi bi-plus-lg"></i> Tambah data
             </a>
+          </div>
         </div>
       </div>
     </div>
@@ -400,7 +401,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://instagram.com/alfrza.rmdn" target="_blank" >Alfareza</a>
+      Designed by <a href="https://instagram.com/alfareza.rmdn_/" target="_blank" >Alfareza</a>
     </div>
   </footer><!-- End Footer -->
 

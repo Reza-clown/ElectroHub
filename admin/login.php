@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
         $row = mysqli_fetch_assoc($result);
 
         // Cek password
-        if (password_verify($password, $row['password'])) {
+        if ($password === $row['password']) {
             // Cek apakah status user adalah admin
             if ($row['status'] === 'admin') {
               $_SESSION['login'] = true;
@@ -26,10 +26,10 @@ if (isset($_POST['login'])) {
               echo "<script>alert('Anda tidak memilki akses sebagai admin!')</script>";
             }
         } else {
-            echo "<script>alert('Password atau username yang anda masukkan salah!')</script>";
+            echo "<script>alert('Password yang anda masukkan salah!')</script>";
         }
     } else {
-        echo "<script>alert('Password atau username yang anda masukkan salah!')</script>";
+        echo "<script>alert('username yang anda masukkan salah!')</script>";
     }
 }
 ?>
@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login - Nama Website Admin</title>
+  <title>Login - Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 

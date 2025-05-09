@@ -10,8 +10,8 @@ if (!isset($_SESSION['login'])) {
 
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
-    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
-    header("Location: login.php");
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';
+  </script>";
     exit;
 }
 ?>
@@ -28,7 +28,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo3.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -63,7 +63,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/logo2.png" alt="">
         <span class="d-none d-lg-block">Elektrohub</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -120,42 +120,42 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-backpack"></i>
+        <i class="bi bi-tags"></i>
           <span>Kategori</span>
         </a>
       </li><!-- End Kategori Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="produk.php">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-box-seam"></i>
           <span>Produk</span>
         </a>
       </li><!-- End Produk Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-cart"></i>
           <span>Keranjang</span>
         </a>
       </li><!-- End Keranjang Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="transaksi.php">
-          <i class="bi bi-card-list"></i>
+          <i class="bi bi-receipt"></i>
           <span>Transaksi</span>
         </a>
       </li><!-- End transaksi Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="laporan.php">
-          <i class="bi bi-box-arrow-in-right"></i>
+          <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Laporan</span>
         </a>
       </li><!-- End Laporan Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pengguna.php">
-          <i class="bi bi-dash-circle"></i>
+          <i class="bi bi-people"></i>
           <span>Pengguna</span>
         </a>
       </li><!-- End Pengguna Page Nav -->
@@ -180,11 +180,10 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="container-fluid">
           <div class="row">  
            <!-- Customers Card -->
           <div class="col-12">
-
             <div class="card info-card customers-card shadow-sm w-100">
               <div class="card-body text-center py-4">
               <h4 class="mb-2">Selamat datang di website admin <strong>Elektrohub!</strong></h4>
@@ -212,7 +211,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Penjualan <span>| Hari</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -247,14 +246,14 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                  <h5 class="card-title"> Pendapatan <span>| Bulan</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
+                      <h6>Rp. 10000</h6>
                       <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                     </div>
@@ -331,7 +330,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://instagram.com/alfrza.rmdn" target="_blank" >Alfareza</a>
+      Designed by <a href="https://instagram.com/alfareza.rmdn_" target="_blank" >Alfareza</a>
     </div>
   </footer><!-- End Footer -->
 

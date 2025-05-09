@@ -11,7 +11,6 @@ if (!isset($_SESSION['login'])) {
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
-    header("Location: login.php");
     exit;
 }
 ?>
@@ -294,7 +293,7 @@ if (isset($_POST['simpan'])) {
 <ul class="sidebar-nav" id="sidebar-nav">
 
 <li class="nav-item">
-    <a class="nav-link " href="index.php">
+    <a class="nav-link collapsed" href="index.php">
       <i class="bi bi-house-door"></i>
       <span>Beranda</span>
     </a>
@@ -393,7 +392,7 @@ if (isset($_POST['simpan'])) {
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://instagram.com/alfrza.rmdn" target="_blank">Alfareza</a>
+      Designed by <a href="https://instagram.com/alfareza.rmdn_/" target="_blank">Alfareza</a>
     </div>
   </footer><!-- End Footer -->
 
