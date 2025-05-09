@@ -10,7 +10,7 @@ if (!isset($_SESSION['login'])) {
 
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
-    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
     header("Location: login.php");
     exit;
 }
@@ -240,36 +240,6 @@ if (isset($_POST['simpan'])) {
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
               <a class="dropdown-item d-flex align-items-center" href="logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
@@ -389,7 +359,7 @@ if (isset($_POST['simpan'])) {
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://instagram.com/alfrza.rmdn">Alfareza</a>
+      Designed by <a href="https://instagram.com/alfareza.rmdn_/">Alfareza</a>
     </div>
   </footer><!-- End Footer -->
 

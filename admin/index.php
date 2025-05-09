@@ -10,7 +10,7 @@ if (!isset($_SESSION['login'])) {
 
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
-    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
     header("Location: login.php");
     exit;
 }

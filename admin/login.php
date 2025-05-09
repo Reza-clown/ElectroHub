@@ -1,26 +1,9 @@
-<?php
-session_start();
-include 'koneksi.php';
-
-// Cek apakah sudah login
-if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
-    exit;
-}
-
-// Cek apakah status tersedia dan pastikan user adalah admin
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
-    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php;'</script>";
-    header("Location: login.php");
-    exit;
-}
-?>
 
 <?php
 session_start();
 require 'koneksi.php';
 
-if (isset($_POST['logon'])) {
+if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -111,7 +94,7 @@ if (isset($_POST['logon'])) {
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" method="POST" action="">
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
