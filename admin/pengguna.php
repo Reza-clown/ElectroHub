@@ -27,7 +27,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/logo3.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -54,7 +54,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
+                <img src="assets/img/logo2.png" alt="">
                 <span class="d-none d-lg-block">ElectroHub</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -79,7 +79,8 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/reza.jpg" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">Alfareza</span>
                         <!-- profile-img.jpg diganti dengan foto kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
@@ -122,42 +123,42 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
             </li><!-- End Dashboard Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="kategori.php">
-                    <i class="bi bi-airplane"></i>
+                    <i class="bi bi-tags"></i>
                     <span>Kategori</span>
                 </a>
             </li><!-- End Kategori Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="produk.php">
-                    <i class="bi bi-question-circle"></i>
+                    <i class="bi bi-box-seam"></i>
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="keranjang.php">
-                    <i class="bi bi-envelope"></i>
+                <a class="nav-link collapsed" href="keranjang.php">
+                    <i class="bi bi-cart"></i>
                     <span>Keranjang</span>
                 </a>
             </li><!-- End Keranjang Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-receipt"></i>
                     <span>Transaksi</span>
                 </a>
             </li><!-- End Transaksi Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-box-arrow-in-right"></i>
+                    <i class="bi bi-file-earmark-bar-graph"></i>
                     <span>Laporan</span>
                 </a>
             </li><!-- End Laporan Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pengguna.php">
-                    <i class="bi bi-dash-circle"></i>
+                <a class="nav-link" href="pengguna.php">
+                    <i class="bi bi-people"></i>
                     <span>Pengguna</span>
                 </a>
             </li><!-- End pengguna Page Nav -->
@@ -178,10 +179,10 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
         </div><!-- End Page Title -->
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <a href="t_produk.php" class="btn btn-primary mt-3">
+                        <a href="t_pengguna.php" class="btn btn-primary mt-3">
                             <i class="bi bi-plus-lg"></i> Tambah Data
                         </a>
                     </div>
@@ -234,7 +235,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                                                 <td><?php echo $hasil['status']; ?></td>
                                                 <td>
                                                     <a href="h_pengguna.php?id=<?php echo $hasil['id_user']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
-                                                        <i> class="bi bi-trash"</i>
+                                                        <i class="bi bi-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -264,10 +265,10 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>ElectroHub</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/namaig/">Nama Anda</a>
+            Designed by <a href="https://instagram.com/alfareza.rmdn_/" target="_blank" >Alfareza</a>
         </div>
     </footer><!-- End Footer -->
 

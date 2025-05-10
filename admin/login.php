@@ -1,36 +1,35 @@
-
 <?php
 session_start();
 require 'koneksi.php';
 
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-    // Cek apakah username ditemukan
-    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
+  // Cek apakah username ditemukan
+  $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
 
-    if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
+  if (mysqli_num_rows($result) === 1) {
+    $row = mysqli_fetch_assoc($result);
 
-        // Cek password
-        if ($password === $row['password']) {
-            // Cek apakah status user adalah admin
-            if ($row['status'] === 'admin') {
-              $_SESSION['login'] = true;
-              $_SESSION['username'] = $row['username'];
-              $_SESSION['status'] = $row['status'];
-              header("Location: index.php");
-              exit;
-            } else {
-              echo "<script>alert('Anda tidak memilki akses sebagai admin!')</script>";
-            }
-        } else {
-            echo "<script>alert('Password yang anda masukkan salah!')</script>";
-        }
+    // Cek password
+    if ($password === $row['password']) {
+      // Cek apakah status user adalah admin
+      if ($row['status'] === 'admin') {
+        $_SESSION['login'] = true;
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['status'] = $row['status'];
+        header("Location: index.php");
+        exit;
+      } else {
+        echo "<script>alert('Anda tidak memilki akses sebagai admin!')</script>";
+      }
     } else {
-        echo "<script>alert('username yang anda masukkan salah!')</script>";
+      echo "<script>alert('Password yang anda masukkan salah!')</script>";
     }
+  } else {
+    echo "<script>alert('username yang anda masukkan salah!')</script>";
+  }
 }
 ?>
 
@@ -48,7 +47,7 @@ if (isset($_POST['login'])) {
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo3.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -80,7 +79,7 @@ if (isset($_POST['login'])) {
 
               <div class="d-flex justify-content-center py-4">
                 <a href="index.php" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
+                  <img src="assets/img/logo2.png" alt="">
                   <span class="d-none d-lg-block">ElectroHub</span>
                 </a>
               </div><!-- End Logo -->
@@ -94,22 +93,22 @@ if (isset($_POST['login'])) {
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" method="POST" action="">
-
-                    <div class="col-12">
+                  <form action="" method="post">
+                    <div class="col-12 mb-3">
                       <label for="yourUsername" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                      </div>
+                      <input type="text" name="username" class="form-control" id="yourUsername" required>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                     </div>
+
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit" name="login">Login</button>
                     </div>
                   </form>
+
 
                 </div>
               </div>
