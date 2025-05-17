@@ -179,7 +179,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
         </div><!-- End Page Title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <a href="t_pengguna.php" class="btn btn-primary mt-3">
@@ -193,7 +193,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
         <section class="section">
             <div class="row">
 
-                <div class="col-lg-6">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">

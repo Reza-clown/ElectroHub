@@ -314,7 +314,7 @@ textarea {
 /*----------------------------------------*/
 button.li-btn {
 	border: none;
-	background: #fed700;
+	background: #0b2d88;
 	color: #242424;
 	font-size: 20px;
 	width: 45px;
@@ -1313,9 +1313,9 @@ textarea:focus {
 /*----------------------------------------*/
 /*Header Top*/
 .header-top {
-	background: #f8f9f9;
+	background: #293a6c;
 	padding: 12px 0;
-	border-bottom: 1px solid #e1e1e1;
+	border-bottom: 1px solid #293a6c;
 }
 /*Phone Wrap*/
 .phone-wrap > li > span {
@@ -1376,10 +1376,10 @@ textarea:focus {
 	transition: all 0.3s ease-in-out;
 }
 .ht-currency-trigger:hover, .ht-language-trigger:hover {
-	color: #fed700;
+	color: #003366;
 }
 .ht-currency-trigger:hover i, .ht-language-trigger:hover i{
-	color: #fed700;
+	color: #003366;
 }
 .ht-setting, .ht-currency, .ht-language {
 	position: absolute;
@@ -1389,7 +1389,7 @@ textarea:focus {
 	display: none;
 }
 .setting, .currency, .language {
-		border-top: 2px solid #fed700;
+		border-top: 2px solid #003366;
 		padding: 20px 20px 10px;
 		background: #ffffff;
 		text-align: left;
@@ -1413,10 +1413,10 @@ textarea:focus {
 		transition: all 0.3s ease-in-out;
 }
 .ht-setting-list > li.active {
-	background: #fed700;
+	background: #003366;
 }
 .ht-setting-list > li:hover {
-		background: #fed700;
+		background: #003366;
 }
 .ht-setting-list > li > a {
 	padding: 0 10px;
@@ -1437,6 +1437,7 @@ textarea:focus {
 /*Header Middle*/
 .header-middle {
 	padding: 30px;
+	background-color: #003366;
 }
 .hm-searchbox {
 	display: flex;
@@ -1515,8 +1516,8 @@ textarea:focus {
 	transition: all 0.3s ease-in-out;
 }
 .hm-wishlist > a:hover {
-	border-color: #fed700;
-	color: #fed700;
+	border-color: #003366;
+	color: #003366;
 }
 /*Header Middle Minicart*/
 .hm-minicart {
@@ -1734,7 +1735,7 @@ textarea:focus {
 }
 /*Header Bottom Menu*/
 .header-bottom {
-		background: #fed700;
+		background: #293a6c;
 		margin-bottom: 20px;
 }
 .hb-menu > nav > ul {
@@ -1769,7 +1770,6 @@ textarea:focus {
 		color: #ffffff;
 }
 .hb-menu nav > ul > li > a::after {
-	content: "\f107";
 	position: absolute;
 	top: 8px;
 	right: 15px;
