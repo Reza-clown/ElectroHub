@@ -158,14 +158,7 @@ session_start();
                                                 </ul>
                                             </li>
                                         
-                                        <!-- Begin Header Middle Wishlist Area -->
-                                         <li class="hm-wishlist">
-                                            <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count">0</span>
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </li>
-                                        <!-- Header Middle Wishlist Area End Here -->
+                                       
                                         <!-- Begin Header Mini Cart Area -->
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
@@ -215,6 +208,54 @@ session_start();
                                         </li>
                                         <?php } ?>
                                         <!-- Header Middle Wishlist Area End Here -->
+                                         <!-- Begin Header Mini Cart Area -->
+                                        <li class="hm-minicart">
+                                            <div class="hm-minicart-trigger">
+                                                <span class="item-icon"></span>
+                                                <span class="item-text">£80.00
+                                                    <span class="cart-item-count">2</span>
+                                                </span>
+                                            </div>
+                                            <span></span>
+                                            <div class="minicart">
+                                                <ul class="minicart-product-list">
+                                                    <li>
+                                                        <a href="single-product.html" class="minicart-product-image">
+                                                            <img src="images/product/small-size/1.jpg" alt="cart products">
+                                                        </a>
+                                                        <div class="minicart-product-details">
+                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
+                                                            <span>£40 x 1</span>
+                                                        </div>
+                                                        <button class="close">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="single-product.html" class="minicart-product-image">
+                                                            <img src="images/product/small-size/2.jpg" alt="cart products">
+                                                        </a>
+                                                        <div class="minicart-product-details">
+                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
+                                                            <span>£40 x 1</span>
+                                                        </div>
+                                                        <button class="close">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                                <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
+                                                <div class="minicart-button">
+                                                    <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                        <span>View Full Cart</span>
+                                                    </a>
+                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
+                                                        <span>Checkout</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- Header Mini Cart Area End Here -->
                                     </ul>
                                 </div>
                                 <!-- Header Middle Right Area End Here -->
@@ -225,7 +266,7 @@ session_start();
                 </div>
                 <!-- Header Middle Area End Here -->
                 <!-- Begin Header Bottom Area -->
-                <div class="header-bottom mb-0 header-sticky stick d-none d-lg-block d-xl-block">
+                <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12">
@@ -279,7 +320,7 @@ session_start();
                             <!-- Begin Li's Banner Area -->
                             <div class="single-banner shop-page-banner" style="text-align: right;">
                                 <a href="#">
-                                    <img src="images/bg-banner/2.jpg" alt="Li's Static Banner">
+                                    <img src="images/bg-banner/5.jpg" alt="Li's Static Banner">
                                 </a>
                             </div>
                             <!-- Li's Banner Area End Here -->
@@ -584,40 +625,42 @@ session_start();
                         </div>
                         <div class="col-lg-3 order-2 order-lg-1">
                             <!--sidebar-categores-box start  -->
-                            <div class="sidebar-categores-box">
-                                <div class="sidebar-title">
-                                    <h2>Filter</h2>
-                                </div>
-                                <!-- btn-clear-all start -->
-                                <button class="btn-clear-all mb-sm-30 mb-xs-30">Clear all</button>
-                                <!-- btn-clear-all end -->
-                                <!-- filter-sub-area start -->
-                                <div class="filter-sub-area">
-                                    <h5 class="filter-sub-titel">Brand</h5>
-                                    <div class="categori-checkbox">
-                                        <form action="" method="get">
-                                            <ul>
-                                                <?php
+                            <!--sidebar-categores-box start  -->
+                        <div class="sidebar-categores-box">
+                            <div class="sidebar-title">
+                                <h2>Filter</h2>
+                            </div>
+                            <!-- btn-clear-all start -->
+                            <button class="btn-clear-all mb-sm-30 mb-xs-30" onclick="window.location.href='<?= basename($_SERVER['PHP_SELF']) ?>'">Clear all</button>
+                            <!-- btn-clear-all end -->
+                            <!-- filter-sub-area start -->
+                            <div class="filter-sub-area">
+                                <h5 class="filter-sub-titel">kategori Produk</h5>
+                                <div class="categori-checkbox">
+                                    <form action="" method="get">
+                                        <ul>
+                                            <?php
                                             include 'admin/koneksi.php';
                                             $kategoriQuery = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
 
                                             while ($kategori = mysqli_fetch_assoc($kategoriQuery)) {
                                                 $checked = (isset($_GET['kategori']) && $_GET['kategori'] == $kategori['id_kategori']) ? 'checked' : '';
                                                 echo '<li>
-                                                <label>
-                                                    <input type="radio" name="kategori" value="' . $kategori['id_kategori'] . '" ' . $checked . ' onchange="this.form.submit()">
-                                                    ' . $kategori['nm_kategori'] . '
-                                                </label>
-                                            </li>';
+                                            <lebel>
+                                                <input type="radio" name="kategori" value="' . $kategori['id_kategori'] . '" ' . $checked . ' onchange="this.form.submit()">
+                                                ' . $kategori['nm_kategori'] . '
+                                            </lebel>
+                                        </li>';
                                             }
                                             ?>
-                                            </ul>
-                                        </form>
-                                    </div>
-                                 </div>
-                                <!-- filter-sub-area end -->
-                               
-                            <!--sidebar-categores-box end  -->
+                                            <ul>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- filter-sub-area end -->
+                            <!-- category-sub-menu end -->
+                        </div>
+                        <!--sidebar-categores-box end  -->
                         </div>
                     </div>
                 </div>
@@ -630,61 +673,64 @@ session_start();
                     <div class="container">
                         <!-- Begin Footer Shipping Area -->
                         <div class="footer-shipping pt-60 pb-55 pb-xs-25">
-                            <div class="row">
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/1.png" alt="Ikon Pengiriman">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Free Delivery</h2>
-                                            <p>And free returns. See checkout for delivery dates.</p>
-                                        </div>
+                        <div class="row">
+                            <!-- Mulai Area Kotak Pengiriman Li -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="images/shipping-icon/1.png" alt="Ikon Pengiriman">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Pengiriman Gratis</h2>
+                                        <p>Dan pengembalian gratis. Lihat di halaman checkout untuk tanggal pengiriman.</p>
                                     </div>
                                 </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/2.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Safe Payment</h2>
-                                            <p>Pay with the world's most popular and secure payment methods.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/3.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Shop with Confidence</h2>
-                                            <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/4.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>24/7 Help Center</h2>
-                                            <p>Have a question? Call a Specialist or chat online.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
                             </div>
+                            <!-- Akhir Area Kotak Pengiriman Li -->
+
+                            <!-- Mulai Area Kotak Pengiriman Li -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="images/shipping-icon/2.png" alt="Ikon Pengiriman">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Pembayaran Aman</h2>
+                                        <p>Bayar dengan metode pembayaran paling populer dan aman di dunia.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Akhir Area Kotak Pengiriman Li -->
+
+                            <!-- Mulai Area Kotak Pengiriman Li -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="images/shipping-icon/3.png" alt="Ikon Pengiriman">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Belanja dengan Percaya Diri</h2>
+                                        <p Per>Perlindungan Pembeli kami melindungi pembelian Anda dari klik hingga pengiriman.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Akhir Area Kotak Pengiriman Li -->
+
+                            <!-- Mulai Area Kotak Pengiriman Li -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="images/shipping-icon/4.png" alt="Ikon Pengiriman">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Pusat Bantuan 24/7</h2>
+                                        <p>Punya pertanyaan? Hubungi Spesialis kami atau chat secara online.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Akhir Area Kotak Pengiriman Li -->
                         </div>
+                    </div>
                         <!-- Footer Shipping Area End Here -->
                     </div>
                 </div>
@@ -696,27 +742,27 @@ session_start();
                             <div class="row">
                                 <!-- Begin Footer Logo Area -->
                                 <div class="col-lg-4 col-md-6">
-                                    <div class="footer-logo">
-                                        <img src="images/menu/logo/3.png" alt="Footer Logo">
-                                        <p class="info">
-                                            We are a team of designers and developers that create high quality HTML Template & Woocommerce, Shopify Theme.
-                                        </p>
-                                    </div>
-                                    <ul class="des">
-                                        <li>
-                                            <span>Address: </span>
-                                            6688Princess Road, London, Greater London BAS 23JK, UK
-                                        </li>
-                                        <li>
-                                            <span>Phone: </span>
-                                            <a href="#">(+123) 123 321 345</a>
-                                        </li>
-                                        <li>
-                                            <span>Email: </span>
-                                            <a href="mailto://info@yourdomain.com">info@yourdomain.com</a>
-                                        </li>
-                                    </ul>
+                                <div class="footer-logo">
+                                    <h1>ElectroHub</h1>
+                                    <p class="info">
+                                        ElectroHub adalah toko online terpercaya yang menawarkan berbagai produk elektronik berkualitas tinggi seperti smartphone, tablet, laptop, dan aksesori pendukung lainnya. Kami berkomitmen memberikan harga terbaik dan pelayanan terbaik untuk memenuhi kebutuhan teknologi Anda.
+                                    </p>
                                 </div>
+                                <ul class="des">
+                                    <li>
+                                        <span>Alamat: </span>
+                                        Jl. Ronggolawe No. 22, Bojonegoro, Jawa Timur 12345, Indonesia
+                                    </li>
+                                    <li>
+                                        <span>Telepon: </span>
+                                        <a href="#">(+62) 822 4367 5769</a>
+                                    </li>
+                                    <li>
+                                        <span>Email: </span>
+                                        <a href="azrilachmad83@gmail.com">ElectroHub</a>
+                                    </li>
+                                </ul>
+                            </div>
                                 <!-- Footer Logo Area End Here -->
                                 <!-- Begin Footer Block Area -->
                                 <div class="col-lg-2 col-md-3 col-sm-6">
@@ -763,19 +809,7 @@ session_start();
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- Begin Footer Newsletter Area -->
-                                    <div class="footer-newsletter">
-                                        <h4>Sign up to newsletter</h4>
-                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
-                                           <div id="mc_embed_signup_scroll">
-                                              <div id="mc-form" class="mc-form subscribe-form form-group" >
-                                                <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
-                                                <button  class="btn" id="mc-submit">Subscribe</button>
-                                              </div>
-                                           </div>
-                                        </form>
-                                    </div>
-                                    <!-- Footer Newsletter Area End Here -->
+                                    
                                 </div>
                                 <!-- Footer Block Area End Here -->
                             </div>
@@ -790,27 +824,7 @@ session_start();
                             <div class="col-lg-12">
                                 <!-- Begin Footer Links Area -->
                                 <div class="footer-links">
-                                    <ul>
-                                        <li><a href="#">Online Shopping</a></li>
-                                        <li><a href="#">Promotions</a></li>
-                                        <li><a href="#">My Orders</a></li>
-                                        <li><a href="#">Help</a></li>
-                                        <li><a href="#">Customer Service</a></li>
-                                        <li><a href="#">Support</a></li>
-                                        <li><a href="#">Most Populars</a></li>
-                                        <li><a href="#">New Arrivals</a></li>
-                                        <li><a href="#">Special Products</a></li>
-                                        <li><a href="#">Manufacturers</a></li>
-                                        <li><a href="#">Our Stores</a></li>
-                                        <li><a href="#">Shipping</a></li>
-                                        <li><a href="#">Payments</a></li>
-                                        <li><a href="#">Warantee</a></li>
-                                        <li><a href="#">Refunds</a></li>
-                                        <li><a href="#">Checkout</a></li>
-                                        <li><a href="#">Discount</a></li>
-                                        <li><a href="#">Refunds</a></li>
-                                        <li><a href="#">Policy Shipping</a></li>
-                                    </ul>
+                                    
                                 </div>
                                 <!-- Footer Links Area End Here -->
                                 <!-- Begin Footer Payment Area -->
