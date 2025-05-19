@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hubungi Kami - Technozone</title>
+    <title>Hubungi Kami - ElectroHub</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -229,21 +229,21 @@ session_start();
                 <div class="row">
                     <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
                         <div class="contact-page-side-content">
-                            <h3 class="contact-page-title">Technozone</h3>
+                            <h3 class="contact-page-title">ElectroHub</h3>
                             <p class="contact-page-message mb-25">
-                                Technozone adalah toko online yang menyediakan berbagai produk elektronik berkualitas seperti smartphone, tablet, laptop, dan aksesori lainnya dengan harga terbaik.
+                               ElectroHub adalah toko online terpercaya yang menawarkan berbagai produk elektronik berkualitas tinggi seperti smartphone, tablet, laptop, dan aksesori pendukung lainnya. Kami berkomitmen memberikan harga terbaik dan pelayanan terbaik untuk memenuhi kebutuhan teknologi Anda.
                             </p>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-map-marker"></i> Alamat</h4>
-                                <p>Jl. Teknologi No. 88, Jakarta Selatan, DKI Jakarta 12345, Indonesia</p>
+                                <p>Jl. Ronggolawe No. 22, Bojonegoro, Jawa Timur 12345, Indonesia</p>
                             </div>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-phone"></i> Telepon</h4>
-                                <p><a href="tel:+6281234567890">(+62) 812 3456 7890</a></p>
+                                <p><a href="tel:+6281234567890">(+62) 224 3675 769</a></p>
                             </div>
                             <div class="single-contact-block last-child">
                                 <h4><i class="fa fa-envelope-o"></i> Email</h4>
-                                <p><a href="mailto:info@technozone.id">info@technozone.id</a></p>
+                                <p><a href="azrilachmad83@gmail.com">ElectroHub</a></p>
                             </div>
                         </div>
                     </div>

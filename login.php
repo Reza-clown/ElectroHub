@@ -36,7 +36,7 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - Technozone</title>
+    <title>Login - ElectroHub</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -91,7 +91,7 @@ if (isset($_POST["login"])) {
                         <div class="col-lg-3">
                             <div class="logo pb-sm-30 pb-xs-30">
                                 <a href="index.php">
-                                    <h1>Technozone</h1>
+                                    <h1>ElectroHub</h1>
                                 </a>
                             </div>
                         </div>
@@ -239,9 +239,9 @@ if (isset($_POST["login"])) {
                     <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
                         <!-- Banner Image -->
                         <div class="banner-wrapper text-center">
-                            <img src="images/bg-banner/4.png" alt="Banner Toko Elektronik" class="img-fluid" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 100%;">
+                            <img src="images/bg-banner/4.jpg" alt="Banner Toko Elektronik" class="img-fluid" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 100%;">
                             <p class="mt-3" style="font-size: 16px; color: #555;">
-                                Temukan smartphone, tablet, laptop, dan produk elektronik terbaik hanya di Technozone!<br>
+                                Mencari produk elektronik terbaik di Indonesia hanya di ElectroHub<br>
                                 <a href="register.php" style="color: #007bff; text-decoration: underline;">Belum punya akun? Register di sini.</a>
                             </p>
                         </div>
@@ -328,23 +328,23 @@ if (isset($_POST["login"])) {
                             <!-- Begin Footer Logo Area -->
                             <div class="col-lg-4 col-md-6">
                                 <div class="footer-logo">
-                                    <h1>Technozone</h1>
+                                    <h1>ElectroHub</h1>
                                     <p class="info">
-                                        Technozone adalah toko online yang menyediakan berbagai produk elektronik berkualitas seperti smartphone, tablet, laptop, dan aksesori lainnya dengan harga terbaik.
+                                        ElectroHub adalah toko online terpercaya yang menawarkan berbagai produk elektronik berkualitas tinggi seperti smartphone, tablet, laptop, dan aksesori pendukung lainnya. Kami berkomitmen memberikan harga terbaik dan pelayanan terbaik untuk memenuhi kebutuhan teknologi Anda.
                                     </p>
                                 </div>
                                 <ul class="des">
                                     <li>
                                         <span>Alamat: </span>
-                                        Jl. Teknologi No. 88, Jakarta Selatan, DKI Jakarta 12345, Indonesia
+                                        Jl. Ronggolawe No. 22, Bojonegoro, Jawa Timur 12345, Indonesia
                                     </li>
                                     <li>
                                         <span>Telepon: </span>
-                                        <a href="#">(+62) 812 3456 7890</a>
+                                        <a href="#">(+62) 822 4367 5769</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
-                                        <a href="mailto:info@technozone.id">info@technozone.id</a>
+                                        <a href="azrilachmad83@gmail.com">ElectroHub</a>
                                     </li>
                                 </ul>
                             </div>
@@ -410,7 +410,7 @@ if (isset($_POST["login"])) {
                             <!-- Footer Payment Area End Here -->
                             <!-- Begin Copyright Area -->
                             <div class="copyright text-center pt-25">
-                                <span><a target="_blank" href="https://www.instagram.com/dea.salsa.503/">Designed by: Dea Salsabilla</a></span>
+                                <span><a target="_blank" href="https://www.instagram.com/dea.salsa.503/">Designed by: Alfareza</a></span>
                             </div>
                             <!-- Copyright Area End Here -->
                         </div>
