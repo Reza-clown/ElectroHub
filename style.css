@@ -4976,6 +4976,9 @@ span.required {
 }
 .product-image > a img {
   width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 .shop-products-wrapper .tab-content .tab-pane.active {
     display: block;

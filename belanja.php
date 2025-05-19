@@ -13,7 +13,7 @@ session_start();
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo2.png">
         <!-- Material Design Iconic Font-V2.2.0 -->
         <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
         <!-- Font Awesome -->
@@ -277,7 +277,7 @@ session_start();
                                         <ul>
                                             <li class="dropdown-holder"><a href="index.php">Beranda</a>
                                             </li>
-                                            <li class="catmenu-dropdown megamenu-holder"><a href="shop-left-sidebar.html">Belanja</a></li>
+                                            <li class="catmenu-dropdown megamenu-holder"><a href="belanja.php">Belanja</a></li>
                                             <li class="dropdown-holder"><a href="contact.php">Hubungi Kami</a></li>
                                         </ul>
                                     </nav>
