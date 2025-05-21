@@ -18,7 +18,7 @@ $data = mysqli_fetch_array($sql);
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo2.png">
     <!-- Material Design Iconic Font-V2.2.0 -->
     <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
     <!-- Font Awesome -->
@@ -72,7 +72,31 @@ $data = mysqli_fetch_array($sql);
     <div class="body-wrapper">
         <!-- Begin Header Area -->
         <header>
-            <!-- Begin Header Middle Area -->
+            <!-- Begin Header Top Area -->
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Begin Header Top Left Area -->
+                            <div class="col-lg-3 col-md-4">
+                                <div class="header-top-left">
+                                </div>
+                            </div>
+                            <!-- Header Top Left Area End Here -->
+                            <!-- Begin Header Top Right Area -->
+                            <div class="col-lg-9 col-md-8">
+                                <div class="header-top-right">
+                                    <ul class="ht-menu">
+                                        
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Header Top Right Area End Here -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Top Area End Here -->
+        <!-- Begin Header Middle Area -->
             <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
                 <div class="container">
                     <div class="row">
@@ -80,7 +104,7 @@ $data = mysqli_fetch_array($sql);
                         <div class="col-lg-3">
                             <div class="logo pb-sm-30 pb-xs-30">
                                 <a href="index.php">
-                                    <h1>ElectroHub</h1>
+                                    <img src="images/menu/logo/4.png" alt="" style="height: 70px; width: auto;">
                                 </a>
                             </div>
                         </div>

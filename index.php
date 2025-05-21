@@ -5,11 +5,11 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home Version Four || limupa - Digital Products Store ECommerce Bootstrap 4 Template</title>
+        <title>Beranda || ElectroHub</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo2.png">
         <!-- Material Design Iconic Font-V2.2.0 -->
         <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
         <!-- Font Awesome -->
@@ -245,78 +245,10 @@
                                    <nav>
                                        <ul>
                                            <li class="dropdown-holder"><a href="index.php">Beranda</a>
-                                               <ul class="hb-dropdown">
-                                                   <li><a href="index.html">Home One</a></li>
-                                                   <li><a href="index-2.html">Home Two</a></li>
-                                                   <li><a href="index-3.html">Home Three</a></li>
-                                                   <li class="active"><a href="index-4.html">Home Four</a></li>
-                                               </ul>
                                            </li>
                                            <li class="megamenu-holder"><a href="belanja.php">Belanja</a>
-                                               <ul class="megamenu hb-megamenu">
-                                                   <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
-                                                       <ul>
-                                                           <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                           <li><a href="shop-4-column.html">Shop 4 Column</a></li>
-                                                           <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                           <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                           <li><a href="shop-list.html">Shop List</a></li>
-                                                           <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                           <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                                       </ul>
-                                                   </li>
-                                                   <li><a href="single-product-gallery-left.html">Single Product Style</a>
-                                                       <ul>
-                                                           <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
-                                                           <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                           <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                           <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                           <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                           <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
-                                                       </ul>
-                                                   </li>
-                                                   <li><a href="single-product.html">Single Products</a>
-                                                       <ul>
-                                                           <li><a href="single-product.html">Single Product</a></li>
-                                                           <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                           <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                           <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                           <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                       </ul>
-                                                   </li>
-                                               </ul>
                                            </li>
-                                           <li class="dropdown-holder"><a href="blog-left-sidebar.html">Hubungi Kami</a>
-                                               <ul class="hb-dropdown">
-                                                   <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
-                                                       <ul class="hb-dropdown hb-sub-dropdown">
-                                                           <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                           <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                           <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                           <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                       </ul>
-                                                   </li>
-                                                   <li class="sub-dropdown-holder"><a href="blog-list-left-sidebar.html">Blog List View</a>
-                                                       <ul class="hb-dropdown hb-sub-dropdown">
-                                                           <li><a href="blog-list.html">Blog List</a></li>
-                                                           <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                           <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                       </ul>
-                                                   </li>
-                                                   <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.html">Blog Details</a>
-                                                       <ul class="hb-dropdown hb-sub-dropdown">
-                                                           <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                           <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                       </ul>
-                                                   </li>
-                                                   <li class="sub-dropdown-holder"><a href="blog-gallery-format.html">Blog Format</a>
-                                                       <ul class="hb-dropdown hb-sub-dropdown">
-                                                           <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                           <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                           <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                       </ul>
-                                                   </li>
-                                               </ul>
+                                           <li class="dropdown-holder"><a href="contact.php">Hubungi Kami</a>
                                            
                                        </ul>
                                    </nav>
