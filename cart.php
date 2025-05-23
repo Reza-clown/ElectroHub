@@ -8,11 +8,11 @@ session_start();
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Shopping Cart || limupa - Digital Products Store eCommerce Bootstrap 4 Template</title>
+        <title>Belanja || ElectroHub</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo2.png">
         <!-- Material Design Iconic Font-V2.2.0 -->
         <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
         <!-- Font Awesome -->
@@ -93,22 +93,7 @@ session_start();
                             <!-- Header Logo Area End Here -->
                             <!-- Begin Header Middle Right Area -->
                             <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
-                                <!-- Begin Header Middle Searchbox Area -->
-                                <form action="" method="GET" class="hm-searchbox">
-                                    <select name="kategori" class="nice-select select-search-category">
-                                        <option value="">All</option>
-                                        <?php
-                                        include 'admin/koneksi.php';
-                                        $kategoriQuery = mysqli_query($koneksi, "SELECT * FROM tb_kategori ORDER BY nm_kategori ASC");
-                                        while ($kategori = mysqli_fetch_assoc($kategoriQuery)) {
-                                            $selected = (isset($_GET['kategori']) && $_GET['kategori'] == $kategori['id_kategori']) ? 'selected' : '';
-                                            echo "<option value='{$kategori['id_kategori']}' $selected>{$kategori['nm_kategori']}</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                    <input type="text" name="keyword" placeholder="Enter your search key..." value="<?= isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>">
-                                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
-                                </form>
+                                
                                 <!-- Header Middle Searchbox Area End Here -->
                                 <!-- Begin Header Middle Right Area -->
                                 <div class="header-middle-right">
@@ -183,10 +168,10 @@ session_start();
                                                 </ul>
                                                 <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
                                                 <div class="minicart-button">
-                                                    <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>View Full Cart</span>
                                                     </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
+                                                    <a href="cart.php" class="li-button li-button-fullwidth li-button-sm">
                                                         <span>Checkout</span>
                                                     </a>
                                                 </div>
@@ -246,8 +231,8 @@ session_start();
                 <div class="container">
                     <div class="breadcrumb-content">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active">Shopping Cart</li>
+                            <li><a href="index.html">Beranda</a></li>
+                            <li class="active">Keranjang</li>
                         </ul>
                     </div>
                 </div>
