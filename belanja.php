@@ -826,7 +826,7 @@ session_start();
                                             <h2 id="modal-nama-produk"></h2>
                                             <span class="product-details-ref" id="modal-kategori">kategori</span>
                                             <div class="price-box pt-20">
-                                                <span class="new-price new-price-2" id="modal-harga">Rp.0</span>
+                                                <span class="new-price new-price-2" id="modal-harga">Rp0</span>
                                             </div>
                                             <div class="product-desc">
                                                 <p id="modal-desk">
@@ -952,6 +952,7 @@ session_start();
         <script src="js/scrollUp.min.js"></script>
         <!-- Main/Activator js -->
         <script src="js/main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </body>
 
 <!-- shop-list31:48-->
