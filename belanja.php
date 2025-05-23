@@ -841,7 +841,7 @@ session_start();
                                                     <input type="hidden" name="harga" id="input-harga">
                                                     <input type="hidden" name="redirect_url" value="belanja.php">
                                                     <div class="quantity">
-                                                        <label>Jumnlah</label>
+                                                        <label>Jumlah</label>
                                                         <div class="cart-plus-minus">
                                                             <input class="cart-plus-minus-box" name="jumlah" id="input-jumlah" value="1" type="text">
                                                             <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
