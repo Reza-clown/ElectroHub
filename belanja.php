@@ -869,6 +869,7 @@ session_start();
                     </div>
                 </div>
             </div>   
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             
             <script>
                 $(document).ready(function() {
@@ -876,7 +877,7 @@ session_start();
                         var id = $(this).data('id');
 
                         $.ajax({
-                            url: 'get-produk.php',
+                            url: 'get_produk.php',
                             type: 'GET',
                             data: {
                                 id: id
@@ -952,7 +953,7 @@ session_start();
         <script src="js/scrollUp.min.js"></script>
         <!-- Main/Activator js -->
         <script src="js/main.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
     </body>
 
 <!-- shop-list31:48-->
