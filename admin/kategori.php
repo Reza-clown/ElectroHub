@@ -68,6 +68,13 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
+     <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="GET" action="">
+                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End Search Bar -->
+
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
@@ -295,17 +302,20 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
 </aside><!-- End Sidebar-->
 
+
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Kategori Produk</h1>
+      <h1>Kategori</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
-          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item">Kategori</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
+
+   
 
     <div class="row">
       <div class="col-lg-12">

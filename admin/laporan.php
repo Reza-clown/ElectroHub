@@ -60,12 +60,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="GET" action="">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
+        
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -169,17 +164,17 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Produk</h1>
+            <h1>Laporan</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                    <li class="breadcrumb-item active">Produk</li>
+                    <li class="breadcrumb-item active">Laporan</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <?php
-        include 'koneksi.php';
+        include "koneksi.php";
 
         if ($koneksi->connect_error) {
             die("Koneksi gagal: " . $koneksi->connect_error);
@@ -188,7 +183,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
         $sqlKategori = "SELECT id_kategori, nm_kategori FROM tb_kategori";
         $resultKategori = $koneksi->query($sqlKategori);
 
-        $sqlTransaksi = "SELECT COUNT(*) AS total FROM tb_jual";
+        $sqlTransaksi = "SELECT COUNT(*) as total FROM tb_jual";
         $resultTransaksi = $koneksi->query($sqlTransaksi);
         $dataTransaksi = $resultTransaksi->fetch_assoc();
         $adaTransaksi = ($dataTransaksi['total'] > 0);
@@ -203,15 +198,17 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                         <div class="card-body">
                             <h5 class="card-title">Cetak Laporan</h5>
 
+                            <!-- Pilih Laporan -->
                             <div class="mb-3">
                                 <label class="form-label">Pilih Laporan</label>
                                 <select id="laporanSelect" class="form-select" onchange="updateTipeLaporan()">
                                     <option value="" selected disabled>Pilih Laporan</option>
                                     <option value="produk">Produk</option>
-                                    <optiion value="transaksi">Transaksi</option>
+                                    <option value="transaksi">Transaksi</option>
                                 </select>
                             </div>
 
+                            <!-- Pilih Tipe Laporan -->
                             <div class="mb-3">
                                 <label class="form-label">Pilih Tipe Laporan</label>
                                 <select id="tipeLaporanSelect" class="form-select">
@@ -228,55 +225,57 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
         <script>
             function updateTipeLaporan() {
-                const laporanSelect = document.getElementById('laporanSelect').value;
-                const tipeLaporanSelect = document.getElementById('tipeLaporanSelect');
-                tipeLaporanSelect.innerHTML = ''; // Kosongkan opsi sebelumnya
+                const laporanSelect = document.getElementById("laporanSelect").value;
+                const tipeLaporanSelect = document.getElementById("tipeLaporanSelect");
+
+                tipeLaporanSelect.innerHTML = "";
 
                 if (laporanSelect === "produk") {
-                    let optionAll = document.createElement('option');
+                    let optionAll = document.createElement("option");
                     optionAll.value = "all";
                     optionAll.textContent = "All";
                     tipeLaporanSelect.appendChild(optionAll);
 
                     <?php if ($resultKategori->num_rows > 0) : ?>
                         <?php while ($row = $resultKategori->fetch_assoc()) : ?>
-                            let option<?php echo $row['id_kategori']; ?> = document.createElement('option');
+                            let option<?php echo $row['id_kategori']; ?> = document.createElement("option");
                             option<?php echo $row['id_kategori']; ?>.value = "<?php echo $row['id_kategori']; ?>";
-                            option<?php echo $row['id_kategori']; ?>.textContent = "<?php echo htmlspecialchars($row['nm_kategori']); ?>";
-                            tipeLaporanSelect.appendChild(option<?php echo $row['id_kategori']; ?>);
+                            option<?php echo $row['id_kategori']; ?>.textContent = "<?php echo $row['nm_kategori']; ?>";
+                            tipeLaporanSelect.appendChild(option<?php echo $row['id_kategori']; ?>);    
                         <?php endwhile; ?>
                     <?php endif; ?>
+
                 } else if (laporanSelect === "transaksi") {
-                    let optionAll = document.createElement('option');
+                    let optionAll = document.createElement("option");
                     optionAll.value = "all";
                     optionAll.textContent = "All";
                     tipeLaporanSelect.appendChild(optionAll);
-
-                    
                 }
             }
 
-            document.getElementById('btnCetak').addEventListener('click', function () {
-                const laporan = document.getElementById('laporanSelect').value;
-                const tipe = document.getElementById('tipeLaporanSelect').value;
+            document.getElementById("btnCetak").addEventListener("click", function() {
+                const laporan = document.getElementById("laporanSelect").value;
+                const tipe = document.getElementById("tipeLaporanSelect").value;
 
                 if (!laporan || !tipe) {
-                    alert('Silakan pilih jenis laporan dan tipe laporan terlebih dahulu.');
+                    alert("Silahkan pilih jenis laporan dan tipe laporan terlebih dahulu.");
                     return;
                 }
 
-                let url = '';
+                let url = "";
+
                 if (laporan === "produk") {
                     if (tipe === "all") {
-                        url = 'pdf_produk_all.php';
+                        url = "pdf_produk_all.php";
                     } else {
-                        url = 'pdf_produk_kategori.php?id_kategori=' + tipe;
+                        url = "pdf_produk_kategori.php?id_kategori=" + tipe;
                     }
                 } else if (laporan === "transaksi") {
-                        url = 'pdf_transaksi.php';
-                    }
-                    window.open(url, '_blank');
-                
+                    url = "pdf_transaksi.php";
+                }
+
+                // Buka file PDF di tab baru
+                window.open(url, "_blank");
             });
         </script>
 

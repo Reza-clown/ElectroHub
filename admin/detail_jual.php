@@ -1,19 +1,23 @@
 <?php
 session_start();
-include 'koneksi.php';
+include "koneksi.php";
 
 // Cek apakah sudah login
-if (!isset($_SESSION['login'])) {
+if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit;
 }
 
 // Cek apakah status tersedia dan pastikan user adalah admin
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
-    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk admin!'); window.location.href='login.php';</script>";
+if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
+    echo "<script>
+    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
+    window.location.href='login.php';
+    </script>";
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -187,13 +191,24 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                         <div class="card-body">
                             <h5 class="card-title">Lihat Detail Transaksi</h5>
                             <div class="table-responsive">
-                                <?php
-                                include 'koneksi.php';
-                                $id_jual = $_GET['id']
+                               <?php
+                                include 'koneksi.php'; // Pastikan koneksi DB kamu benar
 
-                                $jual = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_jual tj JOIN tb_user tu ON tj.id_user = tu.id_user WHERE tj.id_jual = '$id_jual"));
-                                // Ambil data detail jual
-                                $detail = mysqli_query($koneksi, "SELECT tjd.id_produk, tjd.qty, tjd.harga, AS subtotal, tp.nm_produk, tp.harga AS harga_produk FROM tb_jualdtl tjd JOIN tb_produk tp ON tjd.id_produk = tp.id_produk WHERE tjd.id_jual = '$id_jual");
+                                $id_jual = $_GET['id']; // misalnya dari URL atau request
+
+                                // ambil data tb_jual
+                                $jual = mysqli_fetch_assoc(mysqli_query($koneksi, "
+    SELECT * FROM tb_jual tj
+    JOIN tb_user tu ON tj.id_user = tu.id_user
+    WHERE tj.id_jual = '$id_jual'
+"));
+                                // ambil data detail jual
+                                $detail = mysqli_query($koneksi, "
+    SELECT tjd.id_produk, tjd.qty, tjd.harga AS subtotal, tp.nm_produk, tp.harga AS harga_produk
+    FROM tb_jualdtl tjd
+    JOIN tb_produk tp ON tjd.id_produk = tp.id_produk
+    WHERE tjd.id_jual = '$id_jual'
+");
                                 ?>
 
                                 <table class="table table-striped mt-2">
