@@ -144,11 +144,7 @@ if (isset($_POST["login"])) {
             </div>
             <!-- Header Middle Area End Here -->
             <!-- Begin Header Bottom Area -->
-            <div class="header-bottom mb-0 header-sticky stick d-none d-lg-block d-xl-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Begin Header Bottom Menu Area -->
+            <div class="header-bottom mb-0 header-sticky stick d-none d-lg-blogit 
                             <div class="hb-menu">
                                 <nav>
                                     <ul>
