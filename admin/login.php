@@ -3,33 +3,31 @@ session_start();
 require 'koneksi.php';
 
 if (isset($_POST['login'])) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+    $password = $_POST['password'];
 
-  // Cek apakah username ditemukan
-  $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
+    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
 
-  if (mysqli_num_rows($result) === 1) {
-    $row = mysqli_fetch_assoc($result);
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
 
-    // Cek password
-    if ($password === $row['password']) {
-      // Cek apakah status user adalah admin
-      if ($row['status'] === 'admin') {
-        $_SESSION['login'] = true;
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['status'] = $row['status'];
-        header("Location: index.php");
-        exit;
-      } else {
-        echo "<script>alert('Anda tidak memilki akses sebagai admin!')</script>";
-      }
+        // Gunakan password_verify jika password disimpan dalam bentuk hash
+        if (password_verify($password, $row['password'])) {
+            if ($row['status'] === 'admin') {
+                $_SESSION['login'] = true;
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['status'] = $row['status'];
+                header("Location: index.php");
+                exit;
+            } else {
+                echo "<script>alert('Anda tidak memiliki akses sebagai admin!')</script>";
+            }
+        } else {
+            echo "<script>alert('Password yang Anda masukkan salah!')</script>";
+        }
     } else {
-      echo "<script>alert('Password yang anda masukkan salah!')</script>";
+        echo "<script>alert('Username yang Anda masukkan tidak ditemukan!')</script>";
     }
-  } else {
-    echo "<script>alert('username yang anda masukkan salah!')</script>";
-  }
 }
 ?>
 

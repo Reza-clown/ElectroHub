@@ -182,14 +182,22 @@ session_start();
                                                 while ($row = mysqli_fetch_assoc($query_pesanan)) {
                                                     $jumlah_item += $row['qty'];
                                                     $total_keranjang += $row['qty'] * $row['harga'];
-                                                }
+                                                    $diskon = 0;
+                                                    if ($total_keranjang > 3000000) {
+                                                        $diskon = 0.07 * $total_keranjang;
+                                                    } else if ($total_keranjang > 1500000) {
+                                                        $diskon = 0.05 * $total_keranjang;
+                                                    }
+                                                    $total_bayar = $total_keranjang - $diskon;
+
+                                                    }
                                             }
                                             ?>
 
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
                                                 <span class="item-text">
-                                                    Rp<?= number_format($total_keranjang, 0, ',', '.') ?>
+                                                    Rp<?= number_format($total_bayar, 0, ',', '.') ?>
                                                     <span class="cart-item-count"><?= $jumlah_item ?></span>
                                                 </span>
                                             </div>
@@ -235,7 +243,7 @@ session_start();
                                                     </ul>
 
                                                     <?php
-                                                    echo "<p class='minicart-total'>SUBTOTAL: <span>Rp" . number_format($total_keranjang, 0, ',', '.') . "</span></p>";
+                                                    echo "<p class='minicart-total'>TOTAL: <span>Rp" . number_format($total_bayar, 0, ',', '.') . "</span></p>";
                                                     ?>
                                                     <div class="minicart-button">
                                                         <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
