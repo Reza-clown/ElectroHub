@@ -158,7 +158,7 @@ session_start();
                                             </li>
                                         
                                        
-                                        <!-- Begin Header Mini Cart Area -->
+                                         <!-- Begin Header Mini Cart Area -->
                                         <li class="hm-minicart">
                                             <?php
                                             include "admin/koneksi.php";
@@ -168,6 +168,8 @@ session_start();
 
                                             if (isset($_SESSION['username'])) {
                                                 $username = $_SESSION['username'];
+                                                $total_bayar = 0;
+
                                                 $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
                                                 $data_user = mysqli_fetch_assoc($query_user);
                                                 $id_user = $data_user['id_user'];
@@ -197,6 +199,7 @@ session_start();
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
                                                 <span class="item-text">
+                                                    
                                                     Rp<?= number_format($total_bayar, 0, ',', '.') ?>
                                                     <span class="cart-item-count"><?= $jumlah_item ?></span>
                                                 </span>
