@@ -66,7 +66,7 @@ $html = '<html>
 </head>
 <body>
 
-<h1 align="center">ElectroHubu</h1>
+<h1 align="center">ElectroHub</h1>
 <hr>
 <h1 align="center">LAPORAN PRODUK BERDASARKAN KATEGORI</h1>
 

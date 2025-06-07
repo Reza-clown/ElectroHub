@@ -23,7 +23,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Beranda - Elektrohub Admin</title>
+  <title>Beranda - Electrohub Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -64,7 +64,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo2.png" alt="">
-        <span class="d-none d-lg-block">Elektrohub</span>
+        <span class="d-none d-lg-block">Electrohub</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -186,40 +186,36 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
           <div class="col-12">
             <div class="card info-card customers-card shadow-sm w-100">
               <div class="card-body text-center py-4">
-              <h4 class="mb-2">Selamat datang di website admin <strong>Elektrohub!</strong></h4>
+              <h4 class="mb-2">Selamat datang di website admin <strong>Electrohub!</strong></h4>
               <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah.</p>
               </div>
             </div>
 
             </div><!-- End Customers Card -->
+            <?php
+            // koneksi ke database
+            include 'koneksi.php';
+            // Query untuk menghitung jumlah produk
+            $query = "SELECT COUNT(*) as total_pesanan FROM tb_jual";
+            $result = mysqli_query($koneksi, $query);
+            $data = mysqli_fetch_assoc($result);
+            $totalPesanan = $data['total_pesanan'] ?? 0; // Jika tidak ada data, set ke 0
+            ?>
 
             <!-- Sales Card -->
             <div class="col-xxl-6 col-md-12">
               <div class="card info-card sales-card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
                 <div class="card-body">
-                  <h5 class="card-title">Penjualan <span>| Hari</span></h5>
+                  <h5 class="card-title">Pesanan <span>| Semua Waktu</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6><?php echo $totalPesanan; ?></h6>
+                     
 
                     </div>
                   </div>
@@ -229,32 +225,30 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
             </div><!-- End Sales Card -->
 
             <!-- Revenue Card -->
+             <?php
+             include 'koneksi.php';
+
+             $tanggalHariIni = date('Y-m-d');
+
+             $query = "SELECT SUM(total) as total_revenue FROM tb_jual WHERE DATE(tgl_jual) = '$tanggalHariIni'";
+
+             $result = mysqli_query($koneksi, $query);
+              $data = mysqli_fetch_assoc($result);
+              $totalRevenue = $data['total_revenue'] ?? 0; // Jika tidak ada data, set ke 0
+            ?>
             <div class="col-xxl-6 col-md-12">
               <div class="card info-card revenue-card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
                 <div class="card-body">
-                  <h5 class="card-title"> Pendapatan <span>| Bulan</span></h5>
+                  <h5 class="card-title"> Pendapatan <span>| Hari Ini</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>Rp. 10000</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>Rp<?php echo number_format($totalRevenue, 0, ',', '.'); ?></h6>
+                      
 
                     </div>
                   </div>
@@ -267,18 +261,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
           <!-- Recent Activity -->
 
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+           
 
           <!-- Budget Report -->
 

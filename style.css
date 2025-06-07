@@ -337,7 +337,7 @@ a.review-links {
 	background: #fed700 none repeat scroll 0 0;
 	color: #242424;
 	display: inline-block;
-	font-family: Montserrat;
+	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
 	font-weight: 700;
 	height: 50px;
@@ -451,18 +451,19 @@ textarea:focus {
 /*----------------------------------------*/
 /*Home One | Slider Background Image*/
 .bg-1, .bg-2, .bg-3 {
-	background-image: url(images/slider/1.jpg);
+	background-image: url(images/slider/samsung1.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
 	min-height: 475px;
 	width: 100%;
+	filter: brightness(0.9);
 }
 .bg-2 {
-	background-image: url(images/slider/2.jpg);
+	background-image: url(images/slider/mac.png);
 }
 .bg-3 {
-	background-image: url(images/slider/3.jpg);
+	background-image: url(images/slider/airpods.png);
 }
 /*Home Two | Slider Background Image*/
 .bg-4, .bg-5, .bg-6 {
@@ -1516,8 +1517,8 @@ textarea:focus {
 	transition: all 0.3s ease-in-out;
 }
 .hm-wishlist > a:hover {
-	border-color: #003366;
-	color: #003366;
+	border-color: #0c0c0c;
+	color: #080808;
 }
 /*Header Middle Minicart*/
 .hm-minicart {
@@ -1649,6 +1650,8 @@ textarea:focus {
 	flex-shrink: 100;
 	width: 100%;
 	margin-right: 10px;
+	margin-left: 40px; /* atau sesuaikan dengan lebar gambar */
+    padding-top: 5px;
 }
 .minicart .minicart-product-list li .minicart-product-details h6 {
 	color: #333333;
@@ -1697,8 +1700,10 @@ textarea:focus {
 	font-size: 18px;
 	float: right;
 }
-.li-button {
-	display: inline-block;
+.li-button { 
+	display: flex;
+	justify-content: center;
+	align-items: center; /* ✅ Tambahkan ini */
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	font-size: 14px;
@@ -1715,8 +1720,10 @@ textarea:focus {
 	color: #ffffff;
 	line-height: 50px;
 	margin-top: 10px;
+	width: 100%;
 	height: 50px;
 }
+
 .li-button:hover {
 	background: #242424;
 	color: #ffffff;
@@ -1931,7 +1938,7 @@ textarea:focus {
 }
 /*Sticky*/
 .header-sticky.sticky {
-	background: rgba(27, 1, 74, 1)!important; 
+	background: #0e375f!important; 
 	left: 0;
 	position: fixed;
 	right: 0;

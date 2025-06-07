@@ -225,10 +225,12 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                             <th>Tanggal</th>
                                             <td><?= date('d-m-Y H:i:s', strtotime($jual['tgl_jual'])) ?></td>
                                         </tr>
-                                        <tr>Total Bayar</tr>
-                                        <td>Rp <?= number_format($jual['total'], 0, ',', '.') ?></td>
-                                        <tr>Diskon</tr>
-                                        <td>Rp <?= number_format($jual['diskon'], 0, ',', '.') ?></td>
+                                        <tr>
+                                            <th>Total Bayar</th>
+                                        <td>Rp <?= number_format($jual['total'], 0, ',', '.') ?></td></tr>
+                                        <tr>
+                                            <th>Diskon</th>
+                                        <td>Rp <?= number_format($jual['diskon'], 0, ',', '.') ?></td></tr>
                                     </tbody>
                                 </table>
 

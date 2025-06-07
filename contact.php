@@ -13,7 +13,7 @@ session_start();
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo2.png">
     <!-- Material Design Iconic Font-V2.2.0 -->
     <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
     <!-- Font Awesome -->
@@ -55,155 +55,225 @@ session_start();
     <!-- Begin Body Wrapper -->
     <div class="body-wrapper">
         <!-- Begin Header Area -->
-        <header class="li-header-4">
-            <!-- Begin Header Top Area -->
-
-            <!-- Header Top Area End Here -->
-            <!-- Begin Header Middle Area -->
-            <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
-                <div class="container">
-                    <div class="row">
-                        <!-- Begin Header Logo Area -->
-                        <div class="col-lg-3">
-                            <div class="logo pb-sm-30 pb-xs-30">
-                                <a href="index.php">
-                                    <h1>Technozone</h1>
-                                </a>
+         <header>
+                <!-- Begin Header Top Area -->
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Begin Header Top Left Area -->
+                            <div class="col-lg-3 col-md-4">
+                                <div class="header-top-left">
+                                </div>
                             </div>
+                            <!-- Header Top Left Area End Here -->
+                            <!-- Begin Header Top Right Area -->
+                            <div class="col-lg-9 col-md-8">
+                                <div class="header-top-right">
+                                    <ul class="ht-menu">
+                                        
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Header Top Right Area End Here -->
                         </div>
-                        <!-- Header Logo Area End Here -->
-                        <!-- Begin Header Middle Right Area -->
-                        <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                    </div>
+                </div>
+                <!-- Header Top Area End Here -->
+                <!-- Begin Header Middle Area -->
+                <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+                    <div class="container">
+                        <div class="row d-flex align-items-center">
+                            <!-- Begin Header Logo Area -->
+                            <div class="col-lg-3">
+                                <div class="logo pb-sm-30 pb-xs-30">
+                                    <a href="index.php">
+                                        <img src="images/menu/logo/4.png" alt="" style="height: 70px; width: auto;">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Header Logo Area End Here -->
                             <!-- Begin Header Middle Right Area -->
-                            <div class="header-middle-right">
-                                <ul class="hm-menu">
-                                    <?php
+                            <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                               
+                                <!-- Begin Header Middle Right Area -->
+                                <div class="header-middle-right">
+                                    <ul class="hm-menu">
+                                        <?php 
+                                        if (!isset($_SESSION['id_user'])) {
+                                        ?>
+                                            <li class="hm-wishlist">
+                                                <a href="login.php" title="Login">
+                                                    <i class="fa fa-user"></i>
+                                                </a>
+                                            </li> 
+                                        <?php
+                                        } else {
 
-                                    if (!isset($_SESSION['id_user'])) {
-                                    ?>
-                                        <!-- Jika belum login -->
-                                        <li class="hm-wishlist">
-                                            <a href="login.php" title="Login">
-                                                <i class="fa fa-user"></i>
-                                            </a>
-                                        </li>
-                                    <?php
-                                    } else {
-                                        // Ambil nama user dari session atau database jika mau
-                                        $nama_user = $_SESSION['username']; // pastikan diset saat login
-
-                                    ?>
-                                        <!-- User Icon with Dropdown -->
-                                        <li class="hm-wishlist dropdown">
-                                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-user"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" style="padding: 10px; min-width: 150px; text-align: center;">
-                                                <li style="padding: 5px 10px; font-weight: bold;">
-                                                    <?= htmlspecialchars($nama_user) ?>
-                                                </li>
-                                                <li>
-                                                    <hr style="margin: 5px 0;">
-                                                </li> <!-- Garis pembatas -->
-                                                <li>
-                                                    <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
-                                                        <i class="fa fa-sign-out"></i> Logout
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-
-
-                                        <!-- Mini Cart -->
+                                            $nama_user = $_SESSION['username'];
+                                        ?>
+                                            <li class = "hm-wishlist dropdown">
+                                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-user"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" style="padding: 10px; min-width: 150px; text-align: center;">
+                                                    <li style="padding: 5px 10px; font-weight: bold;">
+                                                        <?= htmlspecialchars($nama_user) ?>
+                                                    </li>
+                                                    <li hr style="margin: 5px 0;">
+                                                    </li>
+                                                    <li>
+                                                        <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                                                            <i class="fa fa-sign-out"></i> Logout
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        
+                                       
+                                        <!-- Begin Header Mini Cart Area -->
                                         <li class="hm-minicart">
+                                            <?php
+                                            include "admin/koneksi.php";
+
+                                            $total_keranjang = 0;
+                                            $jumlah_item = 0;
+
+                                            if (isset($_SESSION['username'])) {
+                                                $username = $_SESSION['username'];
+                                                $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
+                                                $data_user = mysqli_fetch_assoc($query_user);
+                                                $id_user = $data_user['id_user'];
+
+                                                $query_pesanan = mysqli_query($koneksi, "
+                                                    SELECT p.qty, pr.harga
+                                                    FROM tb_pesanan p
+                                                    JOIN tb_produk pr ON p.id_produk = pr.id_produk
+                                                    WHERE p.id_user = '$id_user'
+                                                ");
+
+                                                while ($row = mysqli_fetch_assoc($query_pesanan)) {
+                                                    $jumlah_item += $row['qty'];
+                                                    $total_keranjang += $row['qty'] * $row['harga'];
+                                                }
+                                            }
+                                            ?>
+
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
-                                                <span class="item-text">£80.00
-                                                    <span class="cart-item-count">2</span>
+                                                <span class="item-text">
+                                                    Rp<?= number_format($total_keranjang, 0, ',', '.') ?>
+                                                    <span class="cart-item-count"><?= $jumlah_item ?></span>
                                                 </span>
                                             </div>
+
                                             <span></span>
                                             <div class="minicart">
                                                 <ul class="minicart-product-list">
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/1.jpg" alt="cart products">
+                                                    <ul class="minicart-product-list">
+                                                    <?php
+                                                    if (isset($_SESSION['username'])) {
+                                                        $username = $_SESSION['username'];
+                                                        $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
+                                                        $data_user = mysqli_fetch_assoc($query_user);
+                                                        $id_user = $data_user['id_user'];
+
+                                                        $query_pesanan = mysqli_query($koneksi, "
+                                                            SELECT p.id_pesanan, p.qty, pr.id_produk, pr.nm_produk, pr.gambar, pr.harga 
+                                                            FROM tb_pesanan p 
+                                                            JOIN tb_produk pr ON p.id_produk = pr.id_produk 
+                                                            WHERE p.id_user = '$id_user'
+                                                        ");
+
+                                                        while ($row = mysqli_fetch_assoc($query_pesanan)) {
+                                                            $total_item = $row['qty'] * $row['harga'];
+                                                            echo "
+                                                            <li>
+                                                                <a href='single-product.php?id={$row['id_produk']}' class='minicart-product-image'>
+                                                                    <img src='admin/produk_img/{$row['gambar']}' alt='" . htmlspecialchars($row['nm_produk']) . "' width='70'>
+                                                                </a>
+                                                                <div class='minicart-product-details'>
+                                                                    <h6><a href='single-product.php?id={$row['id_produk']}'>" . htmlspecialchars($row['nm_produk']) . "</a></h6>
+                                                                    <span>Rp" . number_format($row['harga'], 0, ',', '.') . " x {$row['qty']}</span>
+                                                                </div>
+                                                                <a href='hapus_pesanan.php?id={$row['id_pesanan']}' onclick='return confirm(\"Hapus item ini?\")' class='close'>
+                                                                    <i class='fa fa-close'></i>
+                                                                </a>
+                                                            </li>";
+                                                        }
+                                                    } else {
+                                                        echo "<li><div class='minicart-product-details'>Silakan login terlebih dahulu.</div></li>";
+                                                    }
+                                                    ?>
+                                                    </ul>
+
+                                                    <?php
+                                                    echo "<p class='minicart-total'>SUBTOTAL: <span>Rp" . number_format($total_keranjang, 0, ',', '.') . "</span></p>";
+                                                    ?>
+                                                    <div class="minicart-button">
+                                                        <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                            <span>View Full Cart</span>
                                                         </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/2.jpg" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
-                                                <div class="minicart-button">
-                                                    <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                        <span>View Full Cart</span>
-                                                    </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
-                                                        <span>Checkout</span>
-                                                    </a>
-                                                </div>
+                                                        <form action="cart.php" method="POST">
+                                                       <form action="cart.php" method="POST" style="margin: 0;">
+                                                            <button type="submit" name="checkout" class="li-button li-button-fullwidth li-button-sm btn btn-warning" style="display: flex; align-items: center; justify-content: center;">
+                                                                CHECKOUT
+                                                            </button>
+                                                        </form> 
+
+                                                    
+
+                                                    </div>
+
                                             </div>
                                         </li>
-                                    <?php } ?>
-                                </ul>
+                                        <?php } ?>
+                                        <!-- Header Middle Wishlist Area End Here -->
+                                        
+                                    </ul>
+                                </div>
+                                <!-- Header Middle Right Area End Here -->
                             </div>
-
                             <!-- Header Middle Right Area End Here -->
                         </div>
-                        <!-- Header Middle Right Area End Here -->
                     </div>
                 </div>
-            </div>
-            <!-- Header Middle Area End Here -->
-            <!-- Begin Header Bottom Area -->
-            <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Begin Header Bottom Menu Area -->
-                            <div class="hb-menu">
-                                <nav>
-                                    <ul>
-                                        <li><a href="index.php">Beranda</a></li>
-                                        <li><a href="belanja.php">Belanja</a></li>
-                                        <li><a href="contact.php">Hubungi Kami</a></li>
-                                    </ul>
-                                </nav>
+                <!-- Header Middle Area End Here -->
+                <!-- Begin Header Bottom Area -->
+                 <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                               <!-- Begin Header Bottom Menu Area -->
+                               <div class="hb-menu">
+                                   <nav>
+                                       <ul>
+                                           <li class="dropdown-holder"><a href="index.php">Beranda</a>
+                                           </li>
+                                           <li class="megamenu-holder"><a href="belanja.php">Belanja</a>
+                                           </li>
+                                           <li class="dropdown-holder"><a href="contact.php">Hubungi Kami</a>
+                                           
+                                       </ul>
+                                   </nav>
+                               </div>
+                               <!-- Header Bottom Menu Area End Here -->
                             </div>
-                            <!-- Header Bottom Menu Area End Here -->
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Header Bottom Area End Here -->
-            <!-- Begin Mobile Menu Area -->
-            <div class="mobile-menu-area mobile-menu-area-4 d-lg-none d-xl-none col-12">
-                <div class="container">
-                    <div class="row">
-                        <div class="mobile-menu">
+                <!-- Header Bottom Area End Here -->
+                <!-- Begin Mobile Menu Area -->
+                <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+                    <div class="container"> 
+                        <div class="row">
+                            <div class="mobile-menu">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Mobile Menu Area End Here -->
-        </header>
+                <!-- Mobile Menu Area End Here -->
+            </header>
         <!-- Header Area End Here -->
         <!-- Begin Li's Breadcrumb Area -->
         <div class="breadcrumb-area">
@@ -284,11 +354,11 @@ session_start();
         <!-- Contact Main Page Area End Here -->
         <!-- Begin Footer Area -->
         <div class="footer">
-            <!-- Begin Footer Static Top Area -->
-            <div class="footer-static-top">
-                <div class="container">
-                    <!-- Begin Footer Shipping Area -->
-                    <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                <!-- Begin Footer Static Top Area -->
+                <div class="footer-static-top">
+                    <div class="container">
+                        <!-- Begin Footer Shipping Area -->
+                        <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                         <div class="row">
                             <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
@@ -347,110 +417,120 @@ session_start();
                             <!-- Akhir Area Kotak Pengiriman Li -->
                         </div>
                     </div>
-
-                    <!-- Footer Shipping Area End Here -->
+                        <!-- Footer Shipping Area End Here -->
+                    </div>
                 </div>
-            </div>
-            <!-- Footer Static Top Area End Here -->
-            <!-- Begin Footer Static Middle Area -->
-            <div class="footer-static-middle">
-                <div class="container">
-                    <div class="footer-logo-wrap pt-50 pb-35">
-                        <div class="row">
-                            <!-- Begin Footer Logo Area -->
-                            <div class="col-lg-4 col-md-6">
+                <!-- Footer Static Top Area End Here -->
+                <!-- Begin Footer Static Middle Area -->
+                <div class="footer-static-middle">
+                    <div class="container">
+                        <div class="footer-logo-wrap pt-50 pb-35">
+                            <div class="row">
+                                <!-- Begin Footer Logo Area -->
+                                <div class="col-lg-4 col-md-6">
                                 <div class="footer-logo">
-                                    <h1>Technozone</h1>
+                                    <h1>ElectroHub</h1>
                                     <p class="info">
-                                        Technozone adalah toko online yang menyediakan berbagai produk elektronik berkualitas seperti smartphone, tablet, laptop, dan aksesori lainnya dengan harga terbaik.
+                                        ElectroHub adalah toko online terpercaya yang menawarkan berbagai produk elektronik berkualitas tinggi seperti smartphone, tablet, laptop, dan aksesori pendukung lainnya. Kami berkomitmen memberikan harga terbaik dan pelayanan terbaik untuk memenuhi kebutuhan teknologi Anda.
                                     </p>
                                 </div>
                                 <ul class="des">
                                     <li>
                                         <span>Alamat: </span>
-                                        Jl. Teknologi No. 88, Jakarta Selatan, DKI Jakarta 12345, Indonesia
+                                        Jl. Ronggolawe No. 22, Bojonegoro, Jawa Timur 12345, Indonesia
                                     </li>
                                     <li>
                                         <span>Telepon: </span>
-                                        <a href="#">(+62) 812 3456 7890</a>
+                                        <a href="#">(+62) 822 4367 5769</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
-                                        <a href="mailto:info@technozone.id">info@technozone.id</a>
+                                        <a href="azrilachmad83@gmail.com">ElectroHub</a>
                                     </li>
                                 </ul>
                             </div>
-
-                            <!-- Footer Logo Area End Here -->
-                            <!-- Begin Footer Block Area -->
-                            <div class="col-lg-2 col-md-3 col-sm-6">
-
-                            </div>
-                            <!-- Footer Block Area End Here -->
-                            <!-- Begin Footer Block Area -->
-                            <div class="col-lg-2 col-md-3 col-sm-6">
-
-                            </div>
-                            <!-- Footer Block Area End Here -->
-                            <!-- Begin Footer Block Area -->
-                            <div class="col-lg-4">
-                                <div class="footer-block">
-                                    <h3 class="footer-block-title">Ikuti Kami</h3>
-                                    <ul class="social-link">
-                                        <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="youtube">
-                                            <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </li>
-                                        <li class="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
-                                                <i class="fa fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <!-- Footer Logo Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-2 col-md-3 col-sm-6">
                                 </div>
-                                <!-- Begin Footer Newsletter Area -->
-                                <!-- Footer Newsletter Area End Here -->
+                                <!-- Footer Block Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-2 col-md-3 col-sm-6">
+                                </div>
+                                <!-- Footer Block Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-4">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Follow Us</h3>
+                                        <ul class="social-link">
+                                            <li class="twitter">
+                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="rss">
+                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                                    <i class="fa fa-rss"></i>
+                                                </a>
+                                            </li>
+                                            <li class="google-plus">
+                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google +">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="facebook">
+                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="youtube">
+                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                                <!-- Footer Block Area End Here -->
                             </div>
-                            <!-- Footer Block Area End Here -->
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Footer Static Middle Area End Here -->
-            <!-- Begin Footer Static Bottom Area -->
-            <div class="footer-static-bottom pt-55 pb-55">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Begin Footer Payment Area -->
-                            <div class="copyright text-center">
-                                <a href="#">
-                                    <img src="images/payment/1.png" alt="">
-                                </a>
+                <!-- Footer Static Middle Area End Here -->
+                <!-- Begin Footer Static Bottom Area -->
+                <div class="footer-static-bottom pt-55 pb-55">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Begin Footer Links Area -->
+                                <div class="footer-links">
+                                    
+                                </div>
+                                <!-- Footer Links Area End Here -->
+                                <!-- Begin Footer Payment Area -->
+                                <div class="copyright text-center">
+                                    <a href="#">
+                                        <img src="images/payment/1.png" alt="">
+                                    </a>
+                                </div>
+                                <!-- Footer Payment Area End Here -->
+                                <!-- Begin Copyright Area -->
+                                <div class="copyright text-center pt-25">
+                                    <span><a target="_blank" href="https://www.instagram.com/alfareza.rmdn_">Alfareza</a></span>
+                                </div>
+                                <!-- Copyright Area End Here -->
                             </div>
-                            <!-- Footer Payment Area End Here -->
-                            <!-- Begin Copyright Area -->
-                            <div class="copyright text-center pt-25">
-                                <span><a target="_blank" href="https://www.instagram.com/dea.salsa.503/">Designed by: Dea Salsabilla</a></span>
-                            </div>
-                            <!-- Copyright Area End Here -->
                         </div>
                     </div>
                 </div>
+                <!-- Footer Static Bottom Area End Here -->
             </div>
-            <!-- Footer Static Bottom Area End Here -->
-        </div>
         <!-- Footer Area End Here -->
     </div>
     <!-- Body Wrapper End Here -->
