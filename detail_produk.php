@@ -212,7 +212,7 @@ session_start();
                                                     ?>
                                                     <div class="minicart-button">
                                                         <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                            <span>View Full Cart</span>
+                                                            <span>Lihat Keranjang</span>
                                                         </a>
                                                         <form action="cart.php" method="POST">
                                                        <form action="cart.php" method="POST" style="margin: 0;">

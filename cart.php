@@ -8,7 +8,7 @@ session_start();
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Belanja || ElectroHub</title>
+        <title>Keranjang - ElectroHub</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -130,7 +130,7 @@ session_start();
                                             </li>
                                         
                                        
-                                        <!-- Begin Header Mini Cart Area -->
+                                         <!-- Begin Header Mini Cart Area -->
                                         <li class="hm-minicart">
                                             <?php
                                             include "admin/koneksi.php";
@@ -140,6 +140,8 @@ session_start();
 
                                             if (isset($_SESSION['username'])) {
                                                 $username = $_SESSION['username'];
+                                                $total_bayar = 0;
+
                                                 $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
                                                 $data_user = mysqli_fetch_assoc($query_user);
                                                 $id_user = $data_user['id_user'];
@@ -169,6 +171,7 @@ session_start();
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
                                                 <span class="item-text">
+                                                    
                                                     Rp<?= number_format($total_bayar, 0, ',', '.') ?>
                                                     <span class="cart-item-count"><?= $jumlah_item ?></span>
                                                 </span>
@@ -219,7 +222,7 @@ session_start();
                                                     ?>
                                                     <div class="minicart-button">
                                                         <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                            <span>View Full Cart</span>
+                                                            <span>Lihat Keranjang</span>
                                                         </a>
                                                         <form action="cart.php" method="POST">
                                                        <form action="cart.php" method="POST" style="margin: 0;">

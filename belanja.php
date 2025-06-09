@@ -9,7 +9,7 @@ session_start();
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Belanja || ElectroHub </title>
+        <title>Belanja - ElectroHub </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -250,7 +250,7 @@ session_start();
                                                     ?>
                                                     <div class="minicart-button">
                                                         <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                            <span>View Full Cart</span>
+                                                            <span>Lihat Keranjang</span>
                                                         </a>
                                                         <form action="cart.php" method="POST">
                                                        <form action="cart.php" method="POST" style="margin: 0;">
@@ -772,7 +772,7 @@ session_start();
                                     </li>
                                     <li>
                                         <span>Email: </span>
-                                        <a href="azrilachmad83@gmail.com">ElectroHub</a>
+                                        <a target="_blank" href="azrilachmad83@gmail.com">ElectroHub@gmail.com</a>
                                     </li>
                                 </ul>
                             </div>
@@ -788,35 +788,20 @@ session_start();
                                 <!-- Begin Footer Block Area -->
                                 <div class="col-lg-4">
                                     <div class="footer-block">
-                                        <h3 class="footer-block-title">Follow Us</h3>
+                                        <h3 class="footer-block-title">Ikuti Kami</h3>
                                         <ul class="social-link">
-                                            <li class="twitter">
-                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="rss">
-                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
-                                                    <i class="fa fa-rss"></i>
-                                                </a>
-                                            </li>
-                                            <li class="google-plus">
-                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google +">
-                                                    <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
                                             <li class="facebook">
-                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                <a href="https://www.facebook.com/Reza" data-toggle="tooltip" target="_blank" title="Facebook">
                                                     <i class="fa fa-facebook"></i>
                                                 </a>
                                             </li>
                                             <li class="youtube">
-                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                <a href="https://www.youtube.com/AlfarezaRamadhan-d9e" data-toggle="tooltip" target="_blank" title="Youtube">
                                                     <i class="fa fa-youtube"></i>
                                                 </a>
                                             </li>
                                             <li class="instagram">
-                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                <a href="https://www.instagram.com/alfareza.rmdn_" data-toggle="tooltip" target="_blank" title="Instagram">
                                                     <i class="fa fa-instagram"></i>
                                                 </a>
                                             </li>
@@ -912,12 +897,10 @@ session_start();
                                                 </form>
                                             </div>
                                             <div class="product-additional-info pt-25">
-                                                <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
+                                                
                                                 <div class="product-social-sharing pt-25">
                                                     <ul>
-                                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                        <li class="instagram"><a target="blank" href="https://www.instagram.com/alfareza.rmdn_"><i class="fa fa-instagram"></i>Instagram</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
