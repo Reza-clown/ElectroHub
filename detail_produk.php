@@ -9,7 +9,7 @@ session_start();
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Detail Product || ElectroHub</title>
+        <title>Detail Produk - ElectroHub</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -290,7 +290,12 @@ session_start();
              <?php
              include 'admin/koneksi.php'; // koneksi ke database
 
-            $id = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : (isset($_GET['id_produk']) ? $_GET['id_produk']: null);
+
+            if (!$id) {
+                echo "<script>alert('Produk tidak ditemukan.'); window.location.href = 'index.html';</script>";
+                exit;
+            }
             $query = mysqli_query($koneksi, "SELECT p.*, k.nm_kategori FROM tb_produk p LEFT JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE id_produk = '$id'");
             $data = mysqli_fetch_assoc($query);
             ?>
@@ -334,7 +339,7 @@ session_start();
                                     <div class="single-add-to-cart">
                                         <form action="tambah_ke_keranjang.php" method="POST" class="cart-quantity">
                                             <input type="hidden" name="id_produk" value="<?= $data['id_produk'] ?>">
-                                            <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
+                                            <input type="hidden" name="id_user" value="<?= isset($_SESSION['id_user']) ? $_SESSION['id_user'] : '' ?>">
                                             <input type="hidden" name="harga" value="<?= $data['harga'] ?>">
                                             <input type="hidden" name="redirect_url" value="<?= $_SERVER['REQUEST_URI'] ?>">
                                             <div class="quantity">
@@ -346,7 +351,7 @@ session_start();
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                            <button class="add-to-cart" type="submit">Beli Sekarang</button>
                                         </form>
                                     </div>
                                     <div class="product-additional-info pt-25">
@@ -354,9 +359,7 @@ session_start();
                                         <div class="product-social-sharing pt-25">
                                             <ul>
                                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
-                                                <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                <li class="instagram"><a target="_blank" href="https://www.instagram.com/alfareza.rmdn_"><i class="fa fa-instagram"></i>Instagram</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -406,9 +409,15 @@ session_start();
                                 <div class="product-active owl-carousel">
                                     <?php
                                     include 'admin/koneksi.php';
-                                    $id_produk = $_GET['id'];
+                                    $id = isset($_GET['id']) ? $_GET['id'] : (isset($_GET['id_produk']) ? $_GET['id_produk']: null);
 
-                                    $query_produk_lain = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk != '$id_produk' ORDER BY RAND() LIMIT 6");
+            if (!$id) {
+                echo "<script>alert('Produk tidak ditemukan.'); window.location.href = 'index.html';</script>";
+                exit;
+            }
+
+
+                                    $query_produk_lain = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk != '$id' ORDER BY RAND() LIMIT 6");
                                     while ($p = mysqli_fetch_array($query_produk_lain)) {
                                     ?>
                                     
@@ -434,8 +443,11 @@ session_start();
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">Beli Sekarang</a></li>
-                                                        <li><a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>" title="Quick View" class="quick-view-btn"><i class="fa fa-eye"></i></a></li>
+                                                        <li class="add-cart active">
+                                                            <a href="detail_produk.php?id_produk=<?= $p['id_produk']; ?>">Beli Sekarang</a>
+                                                        </li>
+
+                                                        
                                                     </ul>
                                                 </div>
                                             </div>
@@ -562,21 +574,7 @@ session_start();
                                     <div class="footer-block">
                                         <h3 class="footer-block-title">Follow Us</h3>
                                         <ul class="social-link">
-                                            <li class="twitter">
-                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="rss">
-                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
-                                                    <i class="fa fa-rss"></i>
-                                                </a>
-                                            </li>
-                                            <li class="google-plus">
-                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google +">
-                                                    <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
+                                            
                                             <li class="facebook">
                                                 <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
                                                     <i class="fa fa-facebook"></i>
@@ -588,7 +586,7 @@ session_start();
                                                 </a>
                                             </li>
                                             <li class="instagram">
-                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                <a href="https://www.instagram.com/alfareza.rmdn_" data-toggle="tooltip" target="_blank" title="Instagram">
                                                     <i class="fa fa-instagram"></i>
                                                 </a>
                                             </li>
@@ -675,61 +673,7 @@ session_start();
                                     <!--// Product Details Left -->
                                 </div>
 
-                                <div class="col-lg-7 col-md-6 col-sm-6">
-                                    <div class="product-details-view-content pt-60">
-                                        <div class="product-info">
-                                            <h2>Today is a good day Framed poster</h2>
-                                            <span class="product-details-ref">Reference: demo_15</span>
-                                            <div class="rating-box pt-20">
-                                                <ul class="rating rating-with-review-item">
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                    <li class="review-item"><a href="#">Read Review</a></li>
-                                                    <li class="review-item"><a href="#">Write Review</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price-box pt-20">
-                                                <span class="new-price new-price-2">$57.98</span>
-                                            </div>
-                                            <div class="product-desc">
-                                                <p>
-                                                    <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <div class="product-variants">
-                                                
-                                            </div>
-                                            <div class="single-add-to-cart">
-                                                <form action="#" class="cart-quantity">
-                                                    <div class="quantity">
-                                                        <label>Quantity</label>
-                                                        <div class="cart-plus-minus">
-                                                            <input class="cart-plus-minus-box" value="1" type="text">
-                                                            <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                            <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="add-to-cart" type="submit">Add to cart</button>
-                                                </form>
-                                            </div>
-                                            <div class="product-additional-info pt-25">
-                                                <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
-                                                <div class="product-social-sharing pt-25">
-                                                    <ul>
-                                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
-                                                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

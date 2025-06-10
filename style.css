@@ -1066,8 +1066,13 @@ textarea:focus {
 
 .product-details-images .lg-image img, 
 .product-details-thumbs .sm-image img {
-  width: 100%;
+  width: 100%;         /* supaya full sesuai container */
+  height: auto;        /* menjaga rasio asli gambar */
+  object-fit: contain; /* pastikan gambar tidak terpotong */
+  display: block;      /* supaya tidak ada space aneh */
+  margin: 0 auto;      /* jika ingin center */
 }
+
 
 .product-details-thumbs .sm-image {
   cursor: pointer;
@@ -1295,7 +1300,7 @@ textarea:focus {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 #scrollUp:hover {
-	background: #fed700 none repeat scroll 0 0;
+	background: #03f71f none repeat scroll 0 0;
 }
 #scrollUp i {
 	color: #ffffff;
@@ -1314,9 +1319,9 @@ textarea:focus {
 /*----------------------------------------*/
 /*Header Top*/
 .header-top {
-	background: #293a6c;
+	background: #051b33;
 	padding: 12px 0;
-	border-bottom: 1px solid #293a6c;
+	border-bottom: 1px solid #051b33;
 }
 /*Phone Wrap*/
 .phone-wrap > li > span {
@@ -1438,7 +1443,7 @@ textarea:focus {
 /*Header Middle*/
 .header-middle {
 	padding: 30px;
-	background-color: #003366;
+	background-color: #011428;
 }
 .hm-searchbox {
 	display: flex;
@@ -1742,7 +1747,7 @@ textarea:focus {
 }
 /*Header Bottom Menu*/
 .header-bottom {
-		background: #293a6c;
+		background: #051b33;
 		margin-bottom: 20px;
 }
 .hb-menu > nav > ul {
@@ -1938,7 +1943,7 @@ textarea:focus {
 }
 /*Sticky*/
 .header-sticky.sticky {
-	background: #0e375f!important; 
+	background: #212529!important; 
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -1984,10 +1989,10 @@ textarea:focus {
 	transition: all 0.3s ease-in-out 0s;
 }
 .hb-menu nav ul > li > ul.hb-dropdown > li.active > a {
-		color: #fed700;
+		color: #00fe2a;
 }
 .hb-menu nav ul > li > ul.hb-dropdown > li > a:hover {
-	color: #fed700;
+	color: #00fe5d;
 }
 /*Header Bottom Sub Dropdown Menu*/
 .hb-menu nav > ul > li > ul > li > ul.hb-sub-dropdown {
@@ -2017,14 +2022,14 @@ textarea:focus {
 }
 .hb-menu nav ul > li > ul.hb-dropdown > li.sub-dropdown-holder:hover::after {
 		transform: rotate(-90deg);
-		color: #fed700;
+		color: #00fe2a;
 }
 .hb-menu nav ul > li > ul.hb-dropdown > li.sub-dropdown-holder > ul > li > a {
 		display: block;
 		padding: 6px 20px;
 }
 .hb-menu nav ul > li > ul.hb-dropdown > li.sub-dropdown-holder:hover > a {
-		color: #fed700;
+		color: #00fe15;
 }
 /*----------------------------------------*/
 /*  2.2 Slider
